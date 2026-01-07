@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MountainRescueApp.UserRegisterPage"
+             BackgroundColor="LightBlue">
+    <ContentPage.Content>
+        <StackLayout
+        
+        Padding="30" 
+        VerticalOptions="Center"
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="LightBlue">
+
+            <Label FontSize="20"></Label>
+
+            <Image 
+                Source="mountainrescue_imageimag.png" 
+                HeightRequest="300"
+                WidthRequest="300"
+                Aspect="AspectFit">
+            </Image>
+
+            <Label FontSize="20"></Label>
+
+            <Entry 
+            x:Name="txtCNP"
+            Placeholder="CNP" 
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtCNP_Completed"
+            Keyboard="Email"
+            FontAttributes="Bold"
+            Text="{Binding Email}">
+            </Entry>
+
+            <Entry 
+            x:Name="txtName"
+            Placeholder="Name" 
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtName_Completed"
+            FontAttributes="Bold"
+            Text="{Binding Email}">
+            </Entry>
+
+            <Entry 
+            x:Name="txtNr_Telefon"
+            Placeholder="Mobile Number"  
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtNr_Telefon_Completed"
+            FontAttributes="Bold"
+            Text="{Binding Driver}">
+            </Entry>
+
+            <Entry 
+            x:Name="txtEmail"
+            Placeholder="E-Mail"  
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtEmail_Completed"
+            FontAttributes="Bold"
+            Text="{Binding Driver}">
+            </Entry>
+
+            <Entry 
+            x:Name="txtPassword"
+            Placeholder="Password" 
+            IsPassword="True" 
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtPassword_Completed"
+            FontAttributes="Bold"
+            Text="{Binding Password}">
+            </Entry>
+            <Image 
+            x:Name="password_icon"
+            Source="HidePassword.png"
+            Margin="0,0,10,-30"  
+            HeightRequest="30"  
+            HorizontalOptions="End"
+            TranslationY="-45"
+            >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"
+                    NumberOfTapsRequired="1">
+                    </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Entry 
+            x:Name="txtPassword_Confirm"
+            Placeholder="Confirm Password" 
+            IsPassword="True" 
+            TextColor="Black"
+            PlaceholderColor="gray"
+            FontAttributes="Bold"
+            Text="{Binding Password}">
+            </Entry>
+            <Image 
+            x:Name="password_icon2"
+            Source="HidePassword.png"
+            Margin="0,0,10,0"  
+            HeightRequest="30"  
+            HorizontalOptions="End"
+            TranslationY="-45"
+            >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped_1"
+                    NumberOfTapsRequired="1">
+                    </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Button 
+            x:Name="RegisterButton"
+            VerticalOptions="Center" 
+            Text="Register" 
+            FontSize="20"
+            FontAttributes="Bold"
+            TextColor="Black" 
+            BackgroundColor="#4E8594" 
+            BorderWidth="1"
+            BorderColor="Black"
+            CornerRadius="50"
+            Clicked="Button_Clicked">
+            </Button>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

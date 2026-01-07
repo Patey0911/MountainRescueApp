@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MountainRescueApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:MountainRescueApp.Models"
+    BackgroundColor="Turquoise">
+
+    <ContentPage.Content>
+        <StackLayout 
+
+            Padding="30" 
+            VerticalOptions="Start"
+            HorizontalOptions="FillAndExpand">
+            <Label FontSize="20"></Label>
+
+            <Image 
+                Source="mountainrescue_imageimag.png" 
+                HeightRequest="300"
+                WidthRequest="300"
+                Aspect="AspectFit">
+            </Image>
+
+            <Label FontSize="70"></Label>
+
+            <Entry
+            x:Name="txtUsername"
+            Placeholder="Email"
+            FontSize="18"
+            TextColor="White"
+            FontAttributes="Bold"
+            PlaceholderColor="White"
+            Completed="txtUsername_Completed"
+            Text="{Binding Name}"
+            Keyboard="Email" />
+
+
+            <Entry
+            x:Name="txtPassword"
+            Placeholder="Password"
+            IsPassword="True"
+            FontSize="18"
+            FontAttributes="Bold"
+            TextColor="White"
+            PlaceholderColor="White"
+            Text="{Binding Password}" />        
+
+            <Image 
+                x:Name="password_icon"
+                Source="HidePasswordWhite.png"
+                Margin="0,0,10,0"  
+                HeightRequest="32"  
+                HorizontalOptions="End"
+                TranslationY="-45"
+                >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped"
+                        NumberOfTapsRequired="1">
+                    </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Button
+    x:Name="LoginButton"
+    VerticalOptions="Center"
+    Text="Login"
+    FontSize="22"
+    FontAttributes="Bold"
+    TextColor="Black"
+    BackgroundColor="ForestGreen"
+    BorderWidth="1"
+    BorderColor="Black"
+    CornerRadius="50"
+    Clicked="Button_ClickedAsync" />
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account? "
+      TextColor="White"
+      FontSize="16" />
+
+                        <Span Text="Register"
+      TextColor="White"
+      FontAttributes="Bold"
+      FontSize="16"
+      TextDecorations="Underline" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Register as a rescue"
+      TextColor="White"
+      FontAttributes="Bold"
+      FontSize="16"
+      TextDecorations="Underline" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>
