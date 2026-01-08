@@ -6,10 +6,13 @@
     the contents are regenerated.
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.companyname.mountainrescueapp" android:versionName="1.0">
-  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:allowBackup="true" android:icon="@mipmap/mountainrescue_icon" android:roundIcon="@mipmap/mountainrescue_icon" android:supportsRtl="true" android:name="crc640dec5d9eb93cc322.MainApplication" android:label="MountainRescueApp" android:debuggable="true" android:extractNativeLibs="true">
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <application android:allowBackup="true" android:supportsRtl="true" android:icon="@mipmap/mountainrescue_icon" android:name="crc640dec5d9eb93cc322.MainApplication" android:label="MountainRescueApp" android:debuggable="true" android:extractNativeLibs="true">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBAtwGuvFEsuYKelWwvLlVAnLQFr5gmYbQ" />
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
     <activity android:configChanges="density|orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:launchMode="singleTop" android:theme="@style/Maui.SplashTheme" android:name="crc64000a1fb5508bd5a2.MainActivity" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -27,4 +30,6 @@
     <service android:name="crc64396a3fe5f8138e3f.KeepAliveService" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="1999999999" android:authorities="com.companyname.mountainrescueapp.mono.MonoRuntimeProvider.__mono_init__" />
   </application>
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="21" />
 </manifest>

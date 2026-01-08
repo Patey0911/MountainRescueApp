@@ -7,6 +7,7 @@ namespace MountainRescueApp
     {
         FirestoreService firestoreService;
         public static UserModel user;
+        public static RescuerModel rescuer;
         public MainPage()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace MountainRescueApp
         private async void Button_ClickedAsync(object sender, EventArgs e)
         {
             String email, password;
+            bool found = false;
             if (string.IsNullOrEmpty(txtUsername.ToString()) || string.IsNullOrEmpty(txtPassword.ToString()))
                 await DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
 
@@ -49,26 +51,46 @@ namespace MountainRescueApp
 
             //Searching the user with that email
             user = await UserRepository.GetByEmail(email);
-
-
-            switch (LoginValidation(email, password, user))
+            if (user != null)
             {
-                case 0:
-                    await DisplayAlert("Alert", "User with this email doesn't exist", "OK");
-                    break;
-                case 1:
-                    //await Navigation.PushAsync(new MainPage(user));
-                    await DisplayAlert("Alert", "Merge", "OK");
-                    break;
-                case 2:
-                    await DisplayAlert("Failed", "Login failed", "OK");
-                    break;
-                default:
-                    break;
+                switch (LoginValidationUser(email, password, user))
+                {
+                    case 0:
+                        await DisplayAlert("Alert", "User with this email doesn't exist", "OK");
+                        break;
+                    case 2:
+                        found = true;
+                        await Navigation.PushAsync(new UserMainPage(user));
+                        break;
+                    case 3:
+                        await DisplayAlert("Failed", "Login failed", "OK");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (found == false)
+            {
+                rescuer = await RescuerRepository.GetByEmail(email);
+                switch (LoginValidationRescuer(email, password, rescuer))
+                {
+                    case 0:
+                        await DisplayAlert("Alert", "User with this email doesn't exist", "OK");
+                        break;
+                    case 2:
+                        //await Navigation.PushAsync(new MainPage(user));
+                        await DisplayAlert("Alert", "Merge", "OK");
+                        break;
+                    case 3:
+                        await DisplayAlert("Failed", "Login failed", "OK");
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
-        private int LoginValidation(string email, string password, UserModel user)
+        private int LoginValidationUser(string email, string password, UserModel user)
         {
             //Verify the credentials from the user
             //Searching the user with that email
@@ -79,11 +101,26 @@ namespace MountainRescueApp
             user.Password = AESRepository.DecryptAesManaged(user.Password);
             //Verify if the passwords match
             if (user.Password != password)
-                return 2;
+                return 3;
             else
-                return 1;
+                return 2;
         }
 
+        private int LoginValidationRescuer(string email, string password, RescuerModel rescuer)
+        {
+            //Verify the credentials from the user
+            //Searching the user with that email
+            if (rescuer == null)
+                return 0;
+
+            //Decrypt the password from firebase
+            rescuer.Password = AESRepository.DecryptAesManaged(rescuer.Password);
+            //Verify if the passwords match
+            if (rescuer.Password != password)
+                return 3;
+            else
+                return 2;
+        }
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             Navigation.PushAsync(new UserRegisterPage());

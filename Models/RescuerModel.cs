@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MountainRescueApp.Models
 {
-    internal class RescuerModel
+    public class RescuerModel
     {
         [FirestoreProperty]
         public string Name { get; set; }

@@ -31,10 +31,12 @@ F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Mic
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Extensions.Primitives.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.Compatibility.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.dll
+F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.Maps.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.Xaml.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Essentials.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Graphics.dll
+F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Maps.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Newtonsoft.Json.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\System.CodeDom.dll
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\System.Linq.Async.dll
@@ -297,10 +299,10 @@ F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\res
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\mountainrescue_icon.appiconset\mountainrescue_icon20x20@2x.png
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\mountainrescue_icon.appiconset\Contents.json
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\logof1l.png
-F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\showpassword.png
-F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\hidepasswordwhite.png
-F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\mountainrescue_imageimag.png
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\hidepassword.png
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\hidepasswordwhite.png
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\showpassword.png
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\mountainrescue_imageimag.png
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\logof1white.png
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\mauiimage.stamp
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\mauifont.stamp
@@ -317,6 +319,7 @@ F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\Mou
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.AssemblyInfoInputs.cache
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.AssemblyInfo.cs
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.csproj.CoreCompileInputs.cache
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.sourcelink.json
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\XamlC.stamp
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.csproj.CopyComplete
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\MountainRescueApp.dll

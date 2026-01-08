@@ -34,6 +34,7 @@
 		<PackageReference Include="Google.Cloud.Firestore" Version="3.8.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -68,6 +69,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="RescueRegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UserMainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UserRegisterPage.xaml">

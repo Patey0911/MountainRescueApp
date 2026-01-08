@@ -48,6 +48,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.Resource
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[F:/Dizertatie/MountainRescueApp/UserMainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.UserMainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = UserMainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = UserMainPage.xaml
+
 [F:/Dizertatie/MountainRescueApp/UserRegisterPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.UserRegisterPage.xaml

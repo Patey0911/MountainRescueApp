@@ -15,6 +15,7 @@
           "Microsoft.Extensions.Logging.Debug": "8.0.0",
           "Microsoft.Maui.Controls": "8.0.3",
           "Microsoft.Maui.Controls.Compatibility": "8.0.3",
+          "Microsoft.Maui.Controls.Maps": "10.0.20",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.19041.31"
         },
         "runtime": {
@@ -507,6 +508,17 @@
           }
         }
       },
+      "Microsoft.Maui.Controls.Maps/10.0.20": {
+        "dependencies": {
+          "Microsoft.Maui.Maps": "10.0.20"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Controls.Maps.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.2025.61502"
+          }
+        }
+      },
       "Microsoft.Maui.Controls.Xaml/8.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "8.0.0",
@@ -574,6 +586,14 @@
           "lib/net8.0-windows10.0.19041/Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "8.0.1.2"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/10.0.20": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.2025.61502"
           }
         }
       },
@@ -940,6 +960,13 @@
       "path": "microsoft.maui.controls.core/8.0.3",
       "hashPath": "microsoft.maui.controls.core.8.0.3.nupkg.sha512"
     },
+    "Microsoft.Maui.Controls.Maps/10.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mvQ1+O/CixqU9lxU2bIe44Bdvog8sEtNPyYN6a7MPobXzj9ldp3JHxuYrNPJg1UEh+vrQpfkdAYGaCH5JK+Esg==",
+      "path": "microsoft.maui.controls.maps/10.0.20",
+      "hashPath": "microsoft.maui.controls.maps.10.0.20.nupkg.sha512"
+    },
     "Microsoft.Maui.Controls.Xaml/8.0.3": {
       "type": "package",
       "serviceable": true,
@@ -974,6 +1001,13 @@
       "sha512": "sha512-/wf8PRqwPecWkTob62Gkc5KBCu9kVmHoy1UAinEcSeHu0KYVaCJ3zXBkS0OSBkgGm7JEon4Ruvg6i+p/GJfjFw==",
       "path": "microsoft.maui.graphics.win2d.winui.desktop/8.0.3",
       "hashPath": "microsoft.maui.graphics.win2d.winui.desktop.8.0.3.nupkg.sha512"
+    },
+    "Microsoft.Maui.Maps/10.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5AJoBQs+BPArH5/Xw1H8kfZv7wgg+3cIigHgezDnzechPDb1mNSwb+/IOWx+OrjdtaVVZAjd/axO1SKtHA2mgA==",
+      "path": "microsoft.maui.maps/10.0.20",
+      "hashPath": "microsoft.maui.maps.10.0.20.nupkg.sha512"
     },
     "Microsoft.Maui.Resizetizer/8.0.3": {
       "type": "package",
