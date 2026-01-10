@@ -37,14 +37,26 @@
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MountainRescueApp.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
+      <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
+      <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
+      <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
+      <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
+      <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\showpasswordwhite.scale-100.png">
+      <PackagePath>showpasswordwhite.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\hidepassword.scale-100.png">
-      <PackagePath>hidepassword.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\hidepasswordwhite.scale-100.png">
-      <PackagePath>hidepasswordwhite.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logof1l.scale-100.png">
       <PackagePath>logof1l.scale-100.png</PackagePath>
@@ -52,290 +64,293 @@
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\logof1white.scale-100.png">
       <PackagePath>logof1white.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon.ico">
-      <PackagePath>mountainrescue_icon.ico</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1.ico">
-      <PackagePath>mountainrescue_icon1.ico</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-100.png">
-      <PackagePath>mountainrescue_icon1LargeTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-125.png">
-      <PackagePath>mountainrescue_icon1LargeTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-150.png">
-      <PackagePath>mountainrescue_icon1LargeTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-200.png">
-      <PackagePath>mountainrescue_icon1LargeTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-400.png">
-      <PackagePath>mountainrescue_icon1LargeTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-16.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-16.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-24.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-256.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-32.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-48.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-16.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-16.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-24.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-256.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-32.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-48.png">
-      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-100.png">
-      <PackagePath>mountainrescue_icon1Logo.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-125.png">
-      <PackagePath>mountainrescue_icon1Logo.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-150.png">
-      <PackagePath>mountainrescue_icon1Logo.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-200.png">
-      <PackagePath>mountainrescue_icon1Logo.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-400.png">
-      <PackagePath>mountainrescue_icon1Logo.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-16.png">
-      <PackagePath>mountainrescue_icon1Logo.targetsize-16.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-24.png">
-      <PackagePath>mountainrescue_icon1Logo.targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-256.png">
-      <PackagePath>mountainrescue_icon1Logo.targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-32.png">
-      <PackagePath>mountainrescue_icon1Logo.targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-48.png">
-      <PackagePath>mountainrescue_icon1Logo.targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-100.png">
-      <PackagePath>mountainrescue_icon1MediumTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-125.png">
-      <PackagePath>mountainrescue_icon1MediumTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-150.png">
-      <PackagePath>mountainrescue_icon1MediumTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-200.png">
-      <PackagePath>mountainrescue_icon1MediumTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-400.png">
-      <PackagePath>mountainrescue_icon1MediumTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-100.png">
-      <PackagePath>mountainrescue_icon1SmallTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-125.png">
-      <PackagePath>mountainrescue_icon1SmallTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-150.png">
-      <PackagePath>mountainrescue_icon1SmallTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-200.png">
-      <PackagePath>mountainrescue_icon1SmallTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-400.png">
-      <PackagePath>mountainrescue_icon1SmallTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-100.png">
-      <PackagePath>mountainrescue_icon1StoreLogo.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-125.png">
-      <PackagePath>mountainrescue_icon1StoreLogo.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-150.png">
-      <PackagePath>mountainrescue_icon1StoreLogo.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-200.png">
-      <PackagePath>mountainrescue_icon1StoreLogo.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-400.png">
-      <PackagePath>mountainrescue_icon1StoreLogo.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-100.png">
-      <PackagePath>mountainrescue_icon1WideTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-125.png">
-      <PackagePath>mountainrescue_icon1WideTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-150.png">
-      <PackagePath>mountainrescue_icon1WideTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-200.png">
-      <PackagePath>mountainrescue_icon1WideTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-400.png">
-      <PackagePath>mountainrescue_icon1WideTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-100.png">
-      <PackagePath>mountainrescue_iconLargeTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-125.png">
-      <PackagePath>mountainrescue_iconLargeTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-150.png">
-      <PackagePath>mountainrescue_iconLargeTile.scale-150.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-400.png">
+      <PackagePath>mountainrescue_iconLargeTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-200.png">
       <PackagePath>mountainrescue_iconLargeTile.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-400.png">
-      <PackagePath>mountainrescue_iconLargeTile.scale-400.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-150.png">
+      <PackagePath>mountainrescue_iconLargeTile.scale-150.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-16.png">
-      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-125.png">
+      <PackagePath>mountainrescue_iconLargeTile.scale-125.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-24.png">
-      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-256.png">
-      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-32.png">
-      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-48.png">
-      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-16.png">
-      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-16.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-24.png">
-      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-256.png">
-      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-32.png">
-      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-48.png">
-      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-100.png">
-      <PackagePath>mountainrescue_iconLogo.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-125.png">
-      <PackagePath>mountainrescue_iconLogo.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-150.png">
-      <PackagePath>mountainrescue_iconLogo.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-200.png">
-      <PackagePath>mountainrescue_iconLogo.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-400.png">
-      <PackagePath>mountainrescue_iconLogo.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-16.png">
-      <PackagePath>mountainrescue_iconLogo.targetsize-16.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-24.png">
-      <PackagePath>mountainrescue_iconLogo.targetsize-24.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-256.png">
-      <PackagePath>mountainrescue_iconLogo.targetsize-256.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-32.png">
-      <PackagePath>mountainrescue_iconLogo.targetsize-32.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-48.png">
-      <PackagePath>mountainrescue_iconLogo.targetsize-48.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-100.png">
-      <PackagePath>mountainrescue_iconMediumTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-125.png">
-      <PackagePath>mountainrescue_iconMediumTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-150.png">
-      <PackagePath>mountainrescue_iconMediumTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-200.png">
-      <PackagePath>mountainrescue_iconMediumTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-400.png">
-      <PackagePath>mountainrescue_iconMediumTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-100.png">
-      <PackagePath>mountainrescue_iconSmallTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-125.png">
-      <PackagePath>mountainrescue_iconSmallTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-150.png">
-      <PackagePath>mountainrescue_iconSmallTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-200.png">
-      <PackagePath>mountainrescue_iconSmallTile.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-400.png">
-      <PackagePath>mountainrescue_iconSmallTile.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-100.png">
-      <PackagePath>mountainrescue_iconStoreLogo.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-125.png">
-      <PackagePath>mountainrescue_iconStoreLogo.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-150.png">
-      <PackagePath>mountainrescue_iconStoreLogo.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-200.png">
-      <PackagePath>mountainrescue_iconStoreLogo.scale-200.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-400.png">
-      <PackagePath>mountainrescue_iconStoreLogo.scale-400.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-100.png">
-      <PackagePath>mountainrescue_iconWideTile.scale-100.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-125.png">
-      <PackagePath>mountainrescue_iconWideTile.scale-125.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-150.png">
-      <PackagePath>mountainrescue_iconWideTile.scale-150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-200.png">
-      <PackagePath>mountainrescue_iconWideTile.scale-200.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLargeTile.scale-100.png">
+      <PackagePath>mountainrescue_iconLargeTile.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-400.png">
       <PackagePath>mountainrescue_iconWideTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_imageimag.scale-100.png">
-      <PackagePath>mountainrescue_imageimag.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-200.png">
+      <PackagePath>mountainrescue_iconWideTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-150.png">
+      <PackagePath>mountainrescue_iconWideTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-125.png">
+      <PackagePath>mountainrescue_iconWideTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconWideTile.scale-100.png">
+      <PackagePath>mountainrescue_iconWideTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-400.png">
+      <PackagePath>mountainrescue_iconMediumTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-200.png">
+      <PackagePath>mountainrescue_iconMediumTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-150.png">
+      <PackagePath>mountainrescue_iconMediumTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-125.png">
+      <PackagePath>mountainrescue_iconMediumTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconMediumTile.scale-100.png">
+      <PackagePath>mountainrescue_iconMediumTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-400.png">
+      <PackagePath>mountainrescue_iconSmallTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-200.png">
+      <PackagePath>mountainrescue_iconSmallTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-150.png">
+      <PackagePath>mountainrescue_iconSmallTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-125.png">
+      <PackagePath>mountainrescue_iconSmallTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconSmallTile.scale-100.png">
+      <PackagePath>mountainrescue_iconSmallTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-400.png">
+      <PackagePath>mountainrescue_iconStoreLogo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-200.png">
+      <PackagePath>mountainrescue_iconStoreLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-150.png">
+      <PackagePath>mountainrescue_iconStoreLogo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-125.png">
+      <PackagePath>mountainrescue_iconStoreLogo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconStoreLogo.scale-100.png">
+      <PackagePath>mountainrescue_iconStoreLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>mountainrescue_iconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-256.png">
+      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-48.png">
+      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-32.png">
+      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-24.png">
+      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.altform-unplated_targetsize-16.png">
+      <PackagePath>mountainrescue_iconLogo.altform-unplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-256.png">
+      <PackagePath>mountainrescue_iconLogo.targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-48.png">
+      <PackagePath>mountainrescue_iconLogo.targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-32.png">
+      <PackagePath>mountainrescue_iconLogo.targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-24.png">
+      <PackagePath>mountainrescue_iconLogo.targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.targetsize-16.png">
+      <PackagePath>mountainrescue_iconLogo.targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-400.png">
+      <PackagePath>mountainrescue_iconLogo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-200.png">
+      <PackagePath>mountainrescue_iconLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-150.png">
+      <PackagePath>mountainrescue_iconLogo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-125.png">
+      <PackagePath>mountainrescue_iconLogo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_iconLogo.scale-100.png">
+      <PackagePath>mountainrescue_iconLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon.ico">
+      <PackagePath>mountainrescue_icon.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\hidepassword.scale-100.png">
+      <PackagePath>hidepassword.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-400.png">
+      <PackagePath>mountainrescue_icon1LargeTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-200.png">
+      <PackagePath>mountainrescue_icon1LargeTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-150.png">
+      <PackagePath>mountainrescue_icon1LargeTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-125.png">
+      <PackagePath>mountainrescue_icon1LargeTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1LargeTile.scale-100.png">
+      <PackagePath>mountainrescue_icon1LargeTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-400.png">
+      <PackagePath>mountainrescue_icon1WideTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-200.png">
+      <PackagePath>mountainrescue_icon1WideTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-150.png">
+      <PackagePath>mountainrescue_icon1WideTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-125.png">
+      <PackagePath>mountainrescue_icon1WideTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1WideTile.scale-100.png">
+      <PackagePath>mountainrescue_icon1WideTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-400.png">
+      <PackagePath>mountainrescue_icon1MediumTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-200.png">
+      <PackagePath>mountainrescue_icon1MediumTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-150.png">
+      <PackagePath>mountainrescue_icon1MediumTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-125.png">
+      <PackagePath>mountainrescue_icon1MediumTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1MediumTile.scale-100.png">
+      <PackagePath>mountainrescue_icon1MediumTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-400.png">
+      <PackagePath>mountainrescue_icon1SmallTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-200.png">
+      <PackagePath>mountainrescue_icon1SmallTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-150.png">
+      <PackagePath>mountainrescue_icon1SmallTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-125.png">
+      <PackagePath>mountainrescue_icon1SmallTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1SmallTile.scale-100.png">
+      <PackagePath>mountainrescue_icon1SmallTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-400.png">
+      <PackagePath>mountainrescue_icon1StoreLogo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-200.png">
+      <PackagePath>mountainrescue_icon1StoreLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-150.png">
+      <PackagePath>mountainrescue_icon1StoreLogo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-125.png">
+      <PackagePath>mountainrescue_icon1StoreLogo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1StoreLogo.scale-100.png">
+      <PackagePath>mountainrescue_icon1StoreLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-lightunplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-256.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-48.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-32.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-24.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.altform-unplated_targetsize-16.png">
+      <PackagePath>mountainrescue_icon1Logo.altform-unplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-256.png">
+      <PackagePath>mountainrescue_icon1Logo.targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-48.png">
+      <PackagePath>mountainrescue_icon1Logo.targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-32.png">
+      <PackagePath>mountainrescue_icon1Logo.targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-24.png">
+      <PackagePath>mountainrescue_icon1Logo.targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.targetsize-16.png">
+      <PackagePath>mountainrescue_icon1Logo.targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-400.png">
+      <PackagePath>mountainrescue_icon1Logo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-200.png">
+      <PackagePath>mountainrescue_icon1Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-150.png">
+      <PackagePath>mountainrescue_icon1Logo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-125.png">
+      <PackagePath>mountainrescue_icon1Logo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1Logo.scale-100.png">
+      <PackagePath>mountainrescue_icon1Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_icon1.ico">
+      <PackagePath>mountainrescue_icon1.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\hidepasswordwhite.scale-100.png">
+      <PackagePath>hidepasswordwhite.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\showpassword.scale-100.png">
       <PackagePath>showpassword.scale-100.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\showpasswordwhite.scale-100.png">
-      <PackagePath>showpasswordwhite.scale-100.png</PackagePath>
+    <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\mountainrescue_imageimag.scale-100.png">
+      <PackagePath>mountainrescue_imageimag.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MountainRescueApp.deps.json">
       <PackagePath>MountainRescueApp.deps.json</PackagePath>

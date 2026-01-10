@@ -3,11 +3,14 @@
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net8.0-android</ActiveDebugFramework>
-    <ActiveDebugProfile>Samsung SM-G996B</ActiveDebugProfile>
+    <ActiveDebugProfile>Samsung SM-S928B</ActiveDebugProfile>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="AllTouristMapPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="EmergencyFormPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="RescueRegisterPage.xaml">

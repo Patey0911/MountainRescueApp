@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MountainRescueApp.EmergencyFormPage"
+             Title="Report Emergency">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Select what you are experiencing" 
+                   FontAttributes="Bold" FontSize="20"/>
+
+            <!-- A set of switches -->
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Pierdut (Lost)" />
+                <Switch x:Name="PierdutSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Entorsă (Sprain)" />
+                <Switch x:Name="EntorsaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Luxație (Dislocation)" />
+                <Switch x:Name="LuxatieSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Fractură (Fracture)" />
+                <Switch x:Name="FracturaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Contuzie (Bruise)" />
+                <Switch x:Name="ContuzieSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Hipotermie (Hypothermia)" />
+                <Switch x:Name="HipotermieSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Degerătură (Frostbite)" />
+                <Switch x:Name="DegeraturaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Insolație (Heat stroke)" />
+                <Switch x:Name="InsolatieSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Deshidratare (Dehydration)" />
+                <Switch x:Name="DeshidratareSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Rău de altitudine" />
+                <Switch x:Name="RaudeAltitudineSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Epuizare fizică" />
+                <Switch x:Name="EpuizareFizicaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Criză respiratorie" />
+                <Switch x:Name="CrizaRespiratorieSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Avalanșă" />
+                <Switch x:Name="AvalansaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Înțepătură" />
+                <Switch x:Name="IntepaturaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
+                <Label Text="Mușcătură" />
+                <Switch x:Name="MuscaturaSwitch" Grid.Column="1"/>
+            </Grid>
+
+            <Button Text="Submit"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    Clicked="Submit_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

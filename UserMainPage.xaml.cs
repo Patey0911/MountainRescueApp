@@ -4,8 +4,8 @@ using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Timers;
 using MountainRescueApp.Services;
-using System.Threading;
-using System.Diagnostics; // for SemaphoreSlim
+using System.Threading; // for SemaphoreSlim
+using System.Diagnostics;
 
 namespace MountainRescueApp;
 
@@ -14,24 +14,24 @@ public partial class UserMainPage : ContentPage
     private System.Timers.Timer _timer;
     private bool _isTracking = false;
     private Polyline _userPath;
-    private readonly SemaphoreSlim _tickLock = new(1, 1); // prevent overlapping ticks
+    private readonly SemaphoreSlim _tickLock = new(1, 1);
 
-    LocationModel Userlocation = new LocationModel();
-    UserModel user_global = new UserModel();
-    UInt64 No_Location = 0;
+    private readonly LocationModel Userlocation = new();
+    private UserModel user_global = new();
+    private ulong No_Location = 0; // use ulong for UInt64 alias
 
     public UserMainPage(UserModel user)
     {
         InitializeComponent();
 
-        _userPath = new Polyline
-        {
-            StrokeColor = Colors.Red,
-            StrokeWidth = 15
-        };
-
+        _userPath = new Polyline { StrokeColor = Colors.Red, StrokeWidth = 15 };
         user_global = user;
+
+        // Attach polyline to the map
         mappy.MapElements.Add(_userPath);
+
+        // Ensure Emergency button is hidden initially
+        EmergencyButton.IsVisible = false;
     }
 
     protected override async void OnAppearing()
@@ -44,10 +44,9 @@ public partial class UserMainPage : ContentPage
         var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
         if (location == null) return;
 
-        mappy.MoveToRegion(
-            MapSpan.FromCenterAndRadius(
-                new Location(location.Latitude, location.Longitude),
-                Distance.FromKilometers(1)));
+        mappy.MoveToRegion(MapSpan.FromCenterAndRadius(
+            new Location(location.Latitude, location.Longitude),
+            Distance.FromKilometers(1)));
 
         mappy.MapType = MapType.Satellite;
     }
@@ -58,23 +57,26 @@ public partial class UserMainPage : ContentPage
         {
             StopTracking();
             TrackButton.Text = "Start Tracking";
+            EmergencyButton.IsVisible = false;
             await UserRepository.UpdateTrack(user_global, false);
         }
         else
         {
             No_Location = 0;
 
-            // clear previous path points in DB for this user
+            // Clear previous path points in DB for this user
             await LocationRepository.Delete(user_global.CNP);
 
-            // save the new state
+            // Save new state
             user_global.Track = true;
             await UserRepository.UpdateTrack(user_global, true);
 
             _userPath.Geopath.Clear();
 
             await StartTracking();
+
             TrackButton.Text = "Stop Tracking";
+            EmergencyButton.IsVisible = true;
         }
     }
 
@@ -82,12 +84,15 @@ public partial class UserMainPage : ContentPage
     {
         _isTracking = true;
 
-        _timer = new System.Timers.Timer(5000);
-        _timer.AutoReset = true;
+        _timer = new System.Timers.Timer(5000)
+        {
+            AutoReset = true,
+            Enabled = true
+        };
         _timer.Elapsed += async (s, e) => await UpdateLocation();
-        _timer.Enabled = true;
 
-        await UpdateLocation(); // first point immediately
+        // First point immediately
+        await UpdateLocation();
     }
 
     private void StopTracking()
@@ -100,25 +105,24 @@ public partial class UserMainPage : ContentPage
 
     private async Task UpdateLocation()
     {
-        // prevent reentrancy if previous tick still running
+        // Prevent overlapping ticks
         if (!await _tickLock.WaitAsync(0)) return;
 
         try
         {
-            // 1) Check server-side Track before doing anything
+            // Check server-side Track before doing anything
             var trackOn = await UserRepository.GetTrackByCnpAsync(user_global.CNP);
             if (!trackOn)
             {
-                // If turned off remotely, stop local tracking & UI
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     StopTracking();
                     TrackButton.Text = "Start Tracking";
+                    EmergencyButton.IsVisible = false;
                 });
-                return; // do not fetch/save location
+                return;
             }
 
-            // 2) Proceed with location update
             var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
             if (location == null) return;
 
@@ -140,12 +144,17 @@ public partial class UserMainPage : ContentPage
         }
         catch (Exception ex)
         {
-            // log/handle errors as needed
             Debug.WriteLine($"UpdateLocation error: {ex}");
         }
         finally
         {
             _tickLock.Release();
         }
+    }
+
+    private async void EmergencyButton_Clicked(object sender, EventArgs e)
+    {
+        if (!_isTracking) return;
+        await Navigation.PushAsync(new EmergencyFormPage(user_global));
     }
 }

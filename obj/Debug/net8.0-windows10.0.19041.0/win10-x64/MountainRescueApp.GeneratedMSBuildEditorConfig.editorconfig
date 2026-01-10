@@ -30,6 +30,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.AppShell
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[F:/Dizertatie/MountainRescueApp/EmergencyFormPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.EmergencyFormPage.xaml
+build_metadata.AdditionalFiles.TargetPath = EmergencyFormPage.xaml
+build_metadata.AdditionalFiles.RelativePath = EmergencyFormPage.xaml
+
 [F:/Dizertatie/MountainRescueApp/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.MainPage.xaml

@@ -11818,9 +11818,10 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f0700fb;
     public static final int showpassword=0x7f0700fc;
     public static final int showpasswordwhite=0x7f0700fd;
-    public static final int test_level_drawable=0x7f0700fe;
-    public static final int tooltip_frame_dark=0x7f0700ff;
-    public static final int tooltip_frame_light=0x7f070100;
+    public static final int splash=0x7f0700fe;
+    public static final int test_level_drawable=0x7f0700ff;
+    public static final int tooltip_frame_dark=0x7f070100;
+    public static final int tooltip_frame_light=0x7f070101;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

@@ -75,14 +75,39 @@ public partial class AllTouristsMapPage : ContentPage
 
         var last = path.Last();
         var lastPos = new Location(last.Latitude, last.Longitude);
+        var emergency = await EmergenciesRepository.GetByCNP(selectedUser.CNP);
 
+        var parts = new List<string>();
+
+        if (emergency?.Pierdut == true) parts.Add("Pierdut");
+        if (emergency?.Entorsa == true) parts.Add("Entorsă");
+        if (emergency?.Luxatie == true) parts.Add("Luxație");
+        if (emergency?.Fractura == true) parts.Add("Fractură");
+        if (emergency?.Contuzie == true) parts.Add("Contuzie");
+        if (emergency?.Hipotermie == true) parts.Add("Hipotermie");
+        if (emergency?.Degeratura == true) parts.Add("Degerătură");
+        if (emergency?.Insolatie == true) parts.Add("Insolație");
+        if (emergency?.Deshidratare == true) parts.Add("Deshidratare");
+        if (emergency?.RaudeAltitudine == true) parts.Add("Rău de altitudine");
+        if (emergency?.EpuizareFizica == true) parts.Add("Epuizare fizică");
+        if (emergency?.CrizaRespiratorie == true) parts.Add("Criză respiratorie");
+        if (emergency?.Avalansa == true) parts.Add("Avalanșă");
+        if (emergency?.Intepatura == true) parts.Add("Înțepătură");
+        if (emergency?.Muscatura == true) parts.Add("Mușcătură");
+
+        string address = parts.Count > 0
+            ? string.Join(", ", parts)
+            : "Ultima locație cunoscută";
+
+        // Create the pin
         selectedUserPin = new Pin
         {
             Label = selectedUser.Name,
-            Address = "Ultima locație cunoscută",
+            Address = address,
             Location = lastPos,
             Type = PinType.Place
         };
+
 
         MainMap.Pins.Add(selectedUserPin);
 

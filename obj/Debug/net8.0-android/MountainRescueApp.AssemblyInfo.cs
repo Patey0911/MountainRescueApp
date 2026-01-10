@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MountainRescueApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+50da35fa5634f160ecd70b54fa541b8cc57a9a4f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+bd78497d4acd6182ed237e66b8a3234e658d9005")]
 [assembly: System.Reflection.AssemblyProductAttribute("MountainRescueApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MountainRescueApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
