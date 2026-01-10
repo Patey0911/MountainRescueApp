@@ -55,7 +55,7 @@ public partial class UserRegisterPage : ContentPage
 
         var user_list = await UserRepository.GetAllUsers();
 
-        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Red, Green, Blue);
+        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Red, Green, Blue, false);
         //await UserRepository.Save(user);
         //Verify if the passwords match
         if (txtPassword.Text == txtPassword_Confirm.Text)
@@ -68,11 +68,18 @@ public partial class UserRegisterPage : ContentPage
                 {
                     if (await TelefonValidation(Nr_Telefon))
                     {
-                        //Save the new user in Firebase
+                        if (await CNPVerification(CNP))
+                        {
+                            //Save the new user in Firebase
 
-                        await UserRepository.Save(user, user_list.Count + 1);
-                        await DisplayAlert("Succes", "The user has been added", "OK");
-                        await Navigation.PopAsync();
+                            await UserRepository.Save(user, user_list.Count + 1);
+                            await DisplayAlert("Succes", "The user has been added", "OK");
+                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Warning!", "The CNP is already used", "OK");
+                        }
                     }
                     else
                     {
@@ -173,12 +180,54 @@ public partial class UserRegisterPage : ContentPage
 
     public void GetRandomColor(out int r, out int g, out int b)
     {
+        int targetR = 50, targetG = 255, targetB = 50;
+        Double minDistance = 120.0;
         var random = new Random();
+        while (true)
+        {
+            r = random.Next(0, 256);
+            g = random.Next(0, 256);
+            b = random.Next(0, 256);
 
-        r = random.Next(0, 256);
-        g = random.Next(0, 256);
-        b = random.Next(0, 256);
+
+            double dist = DistanceRgb(r, g, b, targetR, targetG, targetB);
+            if (dist >= minDistance)
+                return;
+        }
     }
 
 
+    private static double DistanceRgb(int r1, int g1, int b1, int r2, int g2, int b2)
+    {
+        int dr = r1 - r2;
+        int dg = g1 - g2;
+        int db = b1 - b2;
+        return Math.Sqrt(dr * dr + dg * dg + db * db);
+    }
+
+    private async Task<bool> CNPVerification(String cnp)
+    {
+        //Get all the users and then check that the email is not already used
+        var user_list = await UserRepository.GetAllUsers();
+
+        foreach (var user in user_list)
+        {
+            if (user.CNP == cnp)
+            {
+                return false;
+            }
+        }
+
+        var rescuer_list = await RescuerRepository.GetAllRescuers();
+
+        foreach (var rescuer in rescuer_list)
+        {
+            if (rescuer.CNP == cnp)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

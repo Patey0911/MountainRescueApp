@@ -41,7 +41,6 @@ namespace MountainRescueApp
         private async void Button_ClickedAsync(object sender, EventArgs e)
         {
             String email, password;
-            bool found = false;
             if (string.IsNullOrEmpty(txtUsername.ToString()) || string.IsNullOrEmpty(txtPassword.ToString()))
                 await DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
 
@@ -59,7 +58,6 @@ namespace MountainRescueApp
                         await DisplayAlert("Alert", "User with this email doesn't exist", "OK");
                         break;
                     case 2:
-                        found = true;
                         await Navigation.PushAsync(new UserMainPage(user));
                         break;
                     case 3:
@@ -69,7 +67,7 @@ namespace MountainRescueApp
                         break;
                 }
             }
-            if (found == false)
+            if (user == null)
             {
                 rescuer = await RescuerRepository.GetByEmail(email);
                 switch (LoginValidationRescuer(email, password, rescuer))

@@ -1,8 +1,11 @@
-﻿using MountainRescueApp.Models;
+﻿
+using MountainRescueApp.Models;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Timers;
 using MountainRescueApp.Services;
+using System.Threading;
+using System.Diagnostics; // for SemaphoreSlim
 
 namespace MountainRescueApp;
 
@@ -11,6 +14,8 @@ public partial class UserMainPage : ContentPage
     private System.Timers.Timer _timer;
     private bool _isTracking = false;
     private Polyline _userPath;
+    private readonly SemaphoreSlim _tickLock = new(1, 1); // prevent overlapping ticks
+
     LocationModel Userlocation = new LocationModel();
     UserModel user_global = new UserModel();
     UInt64 No_Location = 0;
@@ -19,46 +24,31 @@ public partial class UserMainPage : ContentPage
     {
         InitializeComponent();
 
-        // Create the polyline that will display the user's path
         _userPath = new Polyline
         {
             StrokeColor = Colors.Red,
-            StrokeWidth = 15 // Thicker route line
+            StrokeWidth = 15
         };
 
         user_global = user;
-
-        // Add the polyline to the map
         mappy.MapElements.Add(_userPath);
     }
 
     protected override async void OnAppearing()
-
-    { 
+    {
         base.OnAppearing();
 
-        // Request location permission
         var status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-        if (status != PermissionStatus.Granted)
-            return;
+        if (status != PermissionStatus.Granted) return;
 
-        // Get current location
-        var location = await Geolocation.GetLocationAsync(
-            new GeolocationRequest(GeolocationAccuracy.High)
-        );
+        var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
+        if (location == null) return;
 
-        if (location == null)
-            return;
-
-        // Center the map on the user's location
         mappy.MoveToRegion(
             MapSpan.FromCenterAndRadius(
                 new Location(location.Latitude, location.Longitude),
-                Distance.FromKilometers(1)
-            )
-        );
+                Distance.FromKilometers(1)));
 
-        // Set satellite map mode
         mappy.MapType = MapType.Satellite;
     }
 
@@ -68,15 +58,19 @@ public partial class UserMainPage : ContentPage
         {
             StopTracking();
             TrackButton.Text = "Start Tracking";
+            await UserRepository.UpdateTrack(user_global, false);
         }
         else
         {
             No_Location = 0;
 
-            // Delete previous saved locations for this user
+            // clear previous path points in DB for this user
             await LocationRepository.Delete(user_global.CNP);
 
-            // Clear the polyline path
+            // save the new state
+            user_global.Track = true;
+            await UserRepository.UpdateTrack(user_global, true);
+
             _userPath.Geopath.Clear();
 
             await StartTracking();
@@ -88,57 +82,70 @@ public partial class UserMainPage : ContentPage
     {
         _isTracking = true;
 
-        // Timer triggers every 5 seconds
         _timer = new System.Timers.Timer(5000);
-        _timer.Elapsed += async (s, e) => await UpdateLocation();
         _timer.AutoReset = true;
+        _timer.Elapsed += async (s, e) => await UpdateLocation();
         _timer.Enabled = true;
 
-        // Get the first location immediately
-        await UpdateLocation();
+        await UpdateLocation(); // first point immediately
     }
 
-    private async void StopTracking()
+    private void StopTracking()
     {
         _isTracking = false;
         _timer?.Stop();
         _timer?.Dispose();
+        _timer = null;
     }
 
     private async Task UpdateLocation()
     {
+        // prevent reentrancy if previous tick still running
+        if (!await _tickLock.WaitAsync(0)) return;
+
         try
         {
-            var location = await Geolocation.GetLocationAsync(
-                new GeolocationRequest(GeolocationAccuracy.High));
-
-            if (location != null)
+            // 1) Check server-side Track before doing anything
+            var trackOn = await UserRepository.GetTrackByCnpAsync(user_global.CNP);
+            if (!trackOn)
             {
-                var position = new Location(location.Latitude, location.Longitude);
-
-                MainThread.BeginInvokeOnMainThread(async () =>
+                // If turned off remotely, stop local tracking & UI
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    // Move the map to the new location
-                    mappy.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(50)));
-
-                    // Add the new point to the polyline path
-                    _userPath.Geopath.Add(position);
-
-                    // Save the location to the database
-                    Userlocation.LocationNo = No_Location;
-                    Userlocation.Longitude = location.Longitude;
-                    Userlocation.Latitude = location.Latitude;
-                    Userlocation.CNP = user_global.CNP;
-
-                    await LocationRepository.Save(Userlocation, user_global.CNP, No_Location);
-
-                    No_Location = No_Location + 1;
+                    StopTracking();
+                    TrackButton.Text = "Start Tracking";
                 });
+                return; // do not fetch/save location
             }
+
+            // 2) Proceed with location update
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
+            if (location == null) return;
+
+            var position = new Location(location.Latitude, location.Longitude);
+
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                mappy.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(50)));
+                _userPath.Geopath.Add(position);
+
+                Userlocation.LocationNo = No_Location;
+                Userlocation.Longitude = location.Longitude;
+                Userlocation.Latitude = location.Latitude;
+                Userlocation.CNP = user_global.CNP;
+
+                await LocationRepository.Save(Userlocation, user_global.CNP, No_Location);
+                No_Location++;
+            });
         }
         catch (Exception ex)
         {
-            // Handle GPS or permission errors
+            // log/handle errors as needed
+            Debug.WriteLine($"UpdateLocation error: {ex}");
+        }
+        finally
+        {
+            _tickLock.Release();
         }
     }
 }
