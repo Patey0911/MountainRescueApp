@@ -14,7 +14,7 @@ namespace MountainRescueApp
             firestoreService = new FirestoreService();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             txtPassword.Text = "";
             txtUsername.Text = "";
@@ -78,8 +78,7 @@ namespace MountainRescueApp
                         await DisplayAlert("Alert", "User with this email doesn't exist", "OK");
                         break;
                     case 2:
-                        //await Navigation.PushAsync(new MainPage(user));
-                        await DisplayAlert("Alert", "Merge", "OK");
+                        await Navigation.PushAsync(new RescuerMainPage(rescuer));
                         break;
                     case 3:
                         await DisplayAlert("Failed", "Login failed", "OK");

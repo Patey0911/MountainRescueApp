@@ -30,7 +30,10 @@ namespace MountainRescueApp.Services
                 Password = item.Object.Password,
                 Email = item.Object.Email,
                 CNP = item.Object.CNP,
-                No_Tel = item.Object.No_Tel
+                No_Tel = item.Object.No_Tel,
+                Red = item.Object.Red,
+                Green = item.Object.Green,
+                Blue = item.Object.Blue
             }).ToList();
             return userlist;
         }

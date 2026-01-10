@@ -12,6 +12,12 @@ build_property.ProjectDir = F:\Dizertatie\MountainRescueApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
+[F:/Dizertatie/MountainRescueApp/AllTouristMapPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.AllTouristMapPage.xaml
+build_metadata.AdditionalFiles.TargetPath = AllTouristMapPage.xaml
+build_metadata.AdditionalFiles.RelativePath = AllTouristMapPage.xaml
+
 [F:/Dizertatie/MountainRescueApp/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.App.xaml
@@ -35,6 +41,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.RescueRegisterPage.xaml
 build_metadata.AdditionalFiles.TargetPath = RescueRegisterPage.xaml
 build_metadata.AdditionalFiles.RelativePath = RescueRegisterPage.xaml
+
+[F:/Dizertatie/MountainRescueApp/RescuerMainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MountainRescueApp.RescuerMainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RescuerMainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RescuerMainPage.xaml
 
 [F:/Dizertatie/MountainRescueApp/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

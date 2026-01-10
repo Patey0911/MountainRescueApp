@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MountainRescueApp.RescuerMainPage"
+             Title="Turiști">
+
+    <!-- Soft blue gradient background -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#6dd5fa" Offset="0.0" />
+            <GradientStop Color="#2980b9" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+
+            <!-- Title -->
+            <Label Text="Turiști"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White"
+                   Margin="0,20,0,10"/>
+
+            <BoxView HeightRequest="2"
+                     Color="White"
+                     Opacity="0.4"
+                     HorizontalOptions="Fill"/>
+
+            <!-- Container for tourist cards -->
+            <VerticalStackLayout x:Name="UsersContainer"
+                                 Spacing="15"
+                                 Margin="0,10,0,30">
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

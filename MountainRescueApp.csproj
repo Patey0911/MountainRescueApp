@@ -15,8 +15,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\mountainrescue_icon.png" />
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
-	  <None Remove="Resources\AppIcon\mountainrescue_icon.png" />
+	  <None Remove="Resources\AppIcon\mountainrescue_icon1.png" />
 	  <None Remove="Resources\Images\dotnet_bot.png" />
 	  <None Remove="Resources\Images\HidePassword.png" />
 	  <None Remove="Resources\Images\HidePasswordWhite.png" />
@@ -50,7 +51,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	<MauiIcon Include="Resources\AppIcon\mountainrescue_icon.png" />
+	<MauiIcon Include="Platforms\Android\Resources\mountainrescue_icon.png" />
+	<MauiIcon Include="Resources\AppIcon\mountainrescue_icon1.png" />
 	  <MauiImage Include="Resources\Images\dotnet_bot.png" />
 	  <MauiImage Include="Resources\Images\hidepassword.png" />
 	  <MauiImage Include="Resources\Images\hidepasswordwhite.png" />
@@ -68,7 +70,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="AllTouristMapPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RescueRegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RescuerMainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UserMainPage.xaml">

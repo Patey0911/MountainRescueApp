@@ -43,6 +43,9 @@ public partial class UserRegisterPage : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
+        //Generate different colours for each user
+        int Red, Green, Blue;
+        GetRandomColor(out Red, out Green, out Blue);
         //Get the input from the register form completed by the user
         Name = txtName.Text;
         Password = AESRepository.EncryptAesManaged(txtPassword.Text);
@@ -52,7 +55,7 @@ public partial class UserRegisterPage : ContentPage
 
         var user_list = await UserRepository.GetAllUsers();
 
-        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon);
+        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Red, Green, Blue);
         //await UserRepository.Save(user);
         //Verify if the passwords match
         if (txtPassword.Text == txtPassword_Confirm.Text)
@@ -167,4 +170,15 @@ public partial class UserRegisterPage : ContentPage
     {
         txtEmail.Focus();
     }
+
+    public void GetRandomColor(out int r, out int g, out int b)
+    {
+        var random = new Random();
+
+        r = random.Next(0, 256);
+        g = random.Next(0, 256);
+        b = random.Next(0, 256);
+    }
+
+
 }

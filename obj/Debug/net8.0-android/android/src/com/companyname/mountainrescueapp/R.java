@@ -11818,10 +11818,9 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f0700fb;
     public static final int showpassword=0x7f0700fc;
     public static final int showpasswordwhite=0x7f0700fd;
-    public static final int splash=0x7f0700fe;
-    public static final int test_level_drawable=0x7f0700ff;
-    public static final int tooltip_frame_dark=0x7f070100;
-    public static final int tooltip_frame_light=0x7f070101;
+    public static final int test_level_drawable=0x7f0700fe;
+    public static final int tooltip_frame_dark=0x7f0700ff;
+    public static final int tooltip_frame_light=0x7f070100;
   }
   public static final class id {
     public static final int ALT=0x7f080000;
@@ -12568,9 +12567,13 @@ public final class R {
   }
   public static final class mipmap {
     public static final int mountainrescue_icon=0x7f0d0000;
-    public static final int mountainrescue_icon_background=0x7f0d0001;
-    public static final int mountainrescue_icon_foreground=0x7f0d0002;
-    public static final int mountainrescue_icon_round=0x7f0d0003;
+    public static final int mountainrescue_icon1=0x7f0d0001;
+    public static final int mountainrescue_icon1_background=0x7f0d0002;
+    public static final int mountainrescue_icon1_foreground=0x7f0d0003;
+    public static final int mountainrescue_icon1_round=0x7f0d0004;
+    public static final int mountainrescue_icon_background=0x7f0d0005;
+    public static final int mountainrescue_icon_foreground=0x7f0d0006;
+    public static final int mountainrescue_icon_round=0x7f0d0007;
   }
   public static final class plurals {
     public static final int mtrl_badge_content_description=0x7f0e0000;
