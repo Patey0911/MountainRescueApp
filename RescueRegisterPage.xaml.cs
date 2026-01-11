@@ -6,7 +6,9 @@ namespace MountainRescueApp;
 
 public partial class RescueRegisterPage : ContentPage
 {
-    public static string Name, Password, Email, CNP, Nr_Telefon, Identification_Id;
+    public static string Name, Password, Email, CNP, Nr_Telefon, Identification_Id, Mountain;
+
+    String[] mountains_names = { "Bucegi", "Godeanu", "Fagaras", "Parang", "Retezat" , "Semenic", "Sureanu"};
     public RescueRegisterPage()
     {
         InitializeComponent();
@@ -49,10 +51,11 @@ public partial class RescueRegisterPage : ContentPage
         CNP = txtCNP.Text;
         Nr_Telefon = txtNr_Telefon.Text;
         Identification_Id = txtCodID.Text;
+        Mountain = txtMountain.Text;
 
         var rescuer_list = await RescuerRepository.GetAllRescuers();
 
-        var rescuer = new RescuerModel(Name, Password, Email, CNP, Nr_Telefon, Identification_Id);
+        var rescuer = new RescuerModel(Name, Password, Email, CNP, Nr_Telefon, Identification_Id, Mountain);
         //await UserRepository.Save(user);
         //Verify if the passwords match
         if (txtPassword.Text == txtPassword_Confirm.Text)
@@ -161,6 +164,17 @@ public partial class RescueRegisterPage : ContentPage
     }
 
     private void txtEmail_Completed(object sender, EventArgs e)
+    {
+        txtMountain.Focus();
+    }
+
+    private async void txtMountain_Focused(object sender, FocusEventArgs e)
+    {
+        string action = await DisplayActionSheet("List of the Mountains", "Cancel", null, mountains_names);
+        txtMountain.Text = action;
+    }
+
+    private void txtMountain_Completed(object sender, EventArgs e)
     {
         txtPassword.Focus();
     }

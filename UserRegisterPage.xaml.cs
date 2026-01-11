@@ -7,7 +7,9 @@ namespace MountainRescueApp;
 
 public partial class UserRegisterPage : ContentPage
 {
-    public static string Name, Password, Email, CNP, Nr_Telefon;
+    public static string Name, Password, Email, CNP, Nr_Telefon, Mountain;
+
+    String[] mountains_names = { "Bucegi", "Godeanu", "Fagaras", "Parang", "Retezat", "Semenic", "Sureanu" };
     public UserRegisterPage()
     {
         InitializeComponent();
@@ -52,10 +54,11 @@ public partial class UserRegisterPage : ContentPage
         Email = txtEmail.Text;
         CNP = txtCNP.Text;
         Nr_Telefon = txtNr_Telefon.Text;
+        Mountain = txtMountain.Text;
 
         var user_list = await UserRepository.GetAllUsers();
 
-        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Red, Green, Blue, false);
+        var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Mountain, Red, Green, Blue, false);
         //await UserRepository.Save(user);
         //Verify if the passwords match
         if (txtPassword.Text == txtPassword_Confirm.Text)
@@ -156,6 +159,11 @@ public partial class UserRegisterPage : ContentPage
 
     private void txtEmail_Completed(object sender, EventArgs e)
     {
+        txtMountain.Focus();
+    }
+
+    private void txtMountain_Completed(object sender, EventArgs e)
+    {
         txtPassword.Focus();
     }
 
@@ -167,6 +175,12 @@ public partial class UserRegisterPage : ContentPage
     private void txtCNP_Completed(object sender, EventArgs e)
     {
         txtName.Focus();
+    }
+
+    private async void txtMountain_Focused(object sender, FocusEventArgs e)
+    {
+        string action = await DisplayActionSheet("List of the Mountains", "Cancel", null, mountains_names);
+        txtMountain.Text = action;
     }
 
     private void txtPassword_Completed(object sender, EventArgs e)

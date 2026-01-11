@@ -36,15 +36,19 @@ namespace MountainRescueApp.Models
         [FirestoreProperty]
         public bool Track { get; set; }
 
+        [FirestoreProperty]
+        public string Mountain { get; set; }
+
         public UserModel() { }
 
-        public UserModel(string name, string password, string email, string cnp, string no_tel, int red, int green, int blue, bool track)
+        public UserModel(string name, string password, string email, string cnp, string no_tel, string mountain, int red, int green, int blue, bool track)
         {
             Name = name;
             Password = password;
             Email = email;
             CNP = cnp;
             No_Tel = no_tel;
+            Mountain = mountain;
             Red = red;
             Green = green;
             Blue = blue;

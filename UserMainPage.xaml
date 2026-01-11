@@ -30,7 +30,8 @@
 
         <!-- Report Emergency FAB (bottom-right). Hidden until tracking is ON -->
         <ImageButton x:Name="EmergencyButton"
-                     IsVisible="False"
+                     IsVisible="True"
+                     IsEnabled="False"
                      Clicked="EmergencyButton_Clicked"
                      BackgroundColor="OrangeRed"
                      CornerRadius="28"

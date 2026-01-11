@@ -11,8 +11,6 @@
         HorizontalOptions="FillAndExpand"
         BackgroundColor="LightBlue">
 
-            <Label FontSize="10"></Label>
-
             <Image 
                 Source="mountainrescue_imageimag.png" 
                 HeightRequest="300"
@@ -20,7 +18,6 @@
                 Aspect="AspectFit">
             </Image>
 
-            <Label FontSize="10"></Label>
 
             <Entry 
             x:Name="txtCNP"
@@ -70,6 +67,17 @@
             TextColor="Black"
             PlaceholderColor="gray"
             Completed="txtEmail_Completed"
+            FontAttributes="Bold"
+            Text="{Binding Driver}">
+            </Entry>
+
+            <Entry 
+            x:Name="txtMountain"
+            Placeholder="Mountain"  
+            TextColor="Black"
+            PlaceholderColor="gray"
+            Completed="txtMountain_Completed"
+            Focused="txtMountain_Focused"
             FontAttributes="Bold"
             Text="{Binding Driver}">
             </Entry>

@@ -30,7 +30,9 @@ namespace MountainRescueApp.Services
                 Password = item.Object.Password,
                 Email = item.Object.Email,
                 CNP = item.Object.CNP,
-                No_Tel = item.Object.No_Tel
+                No_Tel = item.Object.No_Tel,
+                Identification_Id = item.Object.Identification_Id,
+                Mountain = item.Object.Mountain
             }).ToList();
             return rescuerlist;
         }

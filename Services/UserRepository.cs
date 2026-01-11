@@ -33,6 +33,7 @@ namespace MountainRescueApp.Services
                 Email = item.Object.Email,
                 CNP = item.Object.CNP,
                 No_Tel = item.Object.No_Tel,
+                Mountain = item.Object.Mountain,
                 Red = item.Object.Red,
                 Green = item.Object.Green,
                 Blue = item.Object.Blue,

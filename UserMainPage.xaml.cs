@@ -31,7 +31,7 @@ public partial class UserMainPage : ContentPage
         mappy.MapElements.Add(_userPath);
 
         // Ensure Emergency button is hidden initially
-        EmergencyButton.IsVisible = false;
+        EmergencyButton.IsEnabled = false;
     }
 
     protected override async void OnAppearing()
@@ -57,7 +57,7 @@ public partial class UserMainPage : ContentPage
         {
             StopTracking();
             TrackButton.Text = "Start Tracking";
-            EmergencyButton.IsVisible = false;
+            EmergencyButton.IsEnabled = false;
             await UserRepository.UpdateTrack(user_global, false);
         }
         else
@@ -76,7 +76,7 @@ public partial class UserMainPage : ContentPage
             await StartTracking();
 
             TrackButton.Text = "Stop Tracking";
-            EmergencyButton.IsVisible = true;
+            EmergencyButton.IsEnabled = true;
         }
     }
 
@@ -118,7 +118,7 @@ public partial class UserMainPage : ContentPage
                 {
                     StopTracking();
                     TrackButton.Text = "Start Tracking";
-                    EmergencyButton.IsVisible = false;
+                    EmergencyButton.IsEnabled = false;
                 });
                 return;
             }

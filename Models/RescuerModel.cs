@@ -26,9 +26,12 @@ namespace MountainRescueApp.Models
         [FirestoreProperty]
         public string Identification_Id { get; set; }
 
+        [FirestoreProperty]
+        public string Mountain { get; set; }
+
         public RescuerModel() { }
 
-        public RescuerModel(string name, string password, string email, string cnp, string no_tel, string identification_id)
+        public RescuerModel(string name, string password, string email, string cnp, string no_tel, string identification_id, string mountain)
         {
             Name = name;
             Password = password;
@@ -36,6 +39,7 @@ namespace MountainRescueApp.Models
             CNP = cnp;
             No_Tel = no_tel;
             Identification_Id = identification_id;
+            Mountain = mountain;
         }
     }
 }

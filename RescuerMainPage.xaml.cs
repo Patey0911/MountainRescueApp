@@ -15,6 +15,8 @@ public partial class RescuerMainPage : ContentPage
     // Keep a quick lookup from Firebase key -> UI
     private readonly Dictionary<string, TouristUi> _cards = new();
 
+    private readonly RescuerModel _rescuer;
+
     private sealed class TouristUi
     {
         public Frame Frame { get; init; }
@@ -27,6 +29,7 @@ public partial class RescuerMainPage : ContentPage
     public RescuerMainPage(RescuerModel rescuer)
     {
         InitializeComponent();
+        _rescuer = rescuer;
     }
 
     protected override void OnAppearing()
@@ -47,7 +50,16 @@ public partial class RescuerMainPage : ContentPage
                 }
                 else
                 {
-                    UpsertUserCard(evt.Key, evt.Object);
+                    // ⬇️ FILTER: doar userii de pe acelasi munte
+                    if (string.Equals(evt.Object.Mountain, _rescuer.Mountain, StringComparison.OrdinalIgnoreCase))
+                    {
+                        UpsertUserCard(evt.Key, evt.Object);
+                    }
+                    else
+                    {
+                        // daca userul exista deja dar nu mai corespunde, il scoatem
+                        RemoveUserCard(evt.Key);
+                    }
                 }
             });
         });
