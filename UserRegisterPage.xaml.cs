@@ -67,6 +67,8 @@ public partial class UserRegisterPage : ContentPage
         var user_list = await UserRepository.GetAllUsers();
 
         var user = new UserModel(Name, Password, Email, CNP, Nr_Telefon, Mountain, Red, Green, Blue, false);
+        var emergecny = new EmergencyModel(CNP, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+        
         //await UserRepository.Save(user);
         //Verify if the passwords match
         if (txtPassword.Text == txtPassword_Confirm.Text)
@@ -84,6 +86,7 @@ public partial class UserRegisterPage : ContentPage
                             //Save the new user in Firebase
 
                             await UserRepository.Save(user, user_list.Count + 1);
+                            await EmergenciesRepository.Save(emergecny);
                             await DisplayAlert("Succes", "The user has been added", "OK");
                             await Navigation.PopAsync();
                         }
@@ -205,8 +208,9 @@ public partial class UserRegisterPage : ContentPage
         // culorile de evitat
         var avoid = new (int R, int G, int B)[]
         {
-        (50, 255, 50),   // verdele
-        (255, 0, 0)      // rosu
+        (109, 213, 250),
+        (41, 128, 185),
+        (255, 0, 0)      
         };
 
         double minDistance = 120.0;

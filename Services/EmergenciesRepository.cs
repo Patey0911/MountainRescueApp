@@ -28,7 +28,6 @@ namespace MountainRescueApp.Services
             .OnceAsync<EmergencyModel>()).Select(item =>
             new EmergencyModel
             {
-
                 CNP = item.Object.CNP,
                 Pierdut = item.Object.Pierdut,
                 Entorsa = item.Object.Entorsa,
@@ -44,7 +43,8 @@ namespace MountainRescueApp.Services
                 CrizaRespiratorie = item.Object.CrizaRespiratorie,
                 Avalansa = item.Object.Avalansa,
                 Intepatura = item.Object.Intepatura,
-                Muscatura = item.Object.Muscatura
+                Muscatura = item.Object.Muscatura,
+                Accidentat = item.Object.Accidentat
             }).ToList();
             return emergencielist;
         }

@@ -5,8 +5,6 @@ using Firebase.Database.Streaming;
 using System.Collections.Generic;
 using System.Linq;
 
-
-
 namespace MountainRescueApp;
 
 public partial class RescuerMainPage : ContentPage
@@ -14,8 +12,8 @@ public partial class RescuerMainPage : ContentPage
     private IDisposable _usersSub;
     private IDisposable _emergenciesSub;
 
-    private readonly Dictionary<string, TouristUi> _cards = new(); // KEY = CNP !!!
-    private readonly Dictionary<string, bool> _lastEmergencyState = new(); // memorăm ultima stare
+    private readonly Dictionary<string, TouristUi> _cards = new();
+    private readonly Dictionary<string, bool> _lastEmergencyState = new();
 
     private readonly RescuerModel _rescuer;
 
@@ -29,6 +27,9 @@ public partial class RescuerMainPage : ContentPage
         public Label CnpLabel { get; init; }
         public UserModel Model { get; set; }
         public Color OriginalColor { get; set; }
+
+        // ❗ FIX: flag pentru timer
+        public bool IsFlickering { get; set; } = false;
     }
 
     public RescuerMainPage(RescuerModel rescuer)
@@ -53,7 +54,7 @@ public partial class RescuerMainPage : ContentPage
                 }
                 else
                 {
-                    UpsertUserCard(evt.Object.CNP, evt.Object); // KEY = CNP !!!
+                    UpsertUserCard(evt.Object.CNP, evt.Object);
                 }
             });
         });
@@ -83,11 +84,13 @@ public partial class RescuerMainPage : ContentPage
             var userColor = Color.FromRgb(user.Red, user.Green, user.Blue);
             existing.OriginalColor = userColor;
 
-            if (existing.Frame.BackgroundColor != EmergencyColor)
+            if (!existing.IsFlickering)
                 existing.Frame.BackgroundColor = userColor;
 
             SetTrackStatus(existing, user.Track);
             ResortUsersContainer();
+
+            CheckInitialEmergencyState(cnp, existing, user);
             return;
         }
 
@@ -145,7 +148,7 @@ public partial class RescuerMainPage : ContentPage
             OriginalColor = userColorNew
         };
 
-        _cards[cnp] = ui; // KEY = CNP !!!
+        _cards[cnp] = ui;
 
         UsersContainer.Children.Add(frame);
 
@@ -154,6 +157,22 @@ public partial class RescuerMainPage : ContentPage
         _ = frame.FadeTo(1, 250);
 
         ResortUsersContainer();
+
+        CheckInitialEmergencyState(cnp, ui, user);
+    }
+
+    private async void CheckInitialEmergencyState(string cnp, TouristUi ui, UserModel user)
+    {
+        var emergency = await EmergenciesRepository.GetByCNP(cnp);
+
+        if (emergency != null && emergency.Accidentat)
+        {
+            _lastEmergencyState[cnp] = true;
+
+            StartCardFlicker(ui);
+            VibratePhone();
+            StartAlarmLoop(user);
+        }
     }
 
     private void RemoveUserCard(string cnp)
@@ -259,38 +278,20 @@ public partial class RescuerMainPage : ContentPage
         if (!_cards.TryGetValue(cnp, out var ui))
             return;
 
-        bool hasEmergency =
-            emergency.Pierdut ||
-            emergency.Entorsa ||
-            emergency.Luxatie ||
-            emergency.Fractura ||
-            emergency.Contuzie ||
-            emergency.Hipotermie ||
-            emergency.Degeratura ||
-            emergency.Insolatie ||
-            emergency.Deshidratare ||
-            emergency.RaudeAltitudine ||
-            emergency.EpuizareFizica ||
-            emergency.CrizaRespiratorie ||
-            emergency.Avalansa ||
-            emergency.Intepatura ||
-            emergency.Muscatura;
+        bool isAccidentat = emergency.Accidentat;
 
-        // Dacă nu avem stare anterioară, o salvăm
         if (!_lastEmergencyState.ContainsKey(cnp))
-            _lastEmergencyState[cnp] = hasEmergency;
+            _lastEmergencyState[cnp] = isAccidentat;
 
-        // Dacă starea NU s-a schimbat, nu facem nimic
-        if (_lastEmergencyState[cnp] == hasEmergency)
+        if (_lastEmergencyState[cnp] == isAccidentat)
             return;
 
-        // Actualizăm starea
-        _lastEmergencyState[cnp] = hasEmergency;
+        _lastEmergencyState[cnp] = isAccidentat;
 
-        if (hasEmergency)
+        if (isAccidentat)
         {
             VibratePhone();
-            StartAlarmLoop();
+            StartAlarmLoop(ui.Model);
             StartCardFlicker(ui);
         }
         else
@@ -299,20 +300,14 @@ public partial class RescuerMainPage : ContentPage
         }
     }
 
-    private async void StartAlarmLoop()
+    private async void StartAlarmLoop(UserModel user)
     {
         var audio = ServiceHelper.GetService<IAudioService>();
         audio.PlayAlertLoop();
 
-        await DisplayAlert("Emergency Alert", "A tourist has reported an emergency!", "OK");
+        await DisplayAlert("Emergency Alert", $"{user.Name} has reported an emergency!", "OK");
 
         audio.StopAlert();
-    }
-
-
-    private async void ShowEmergencyPopup(UserModel user)
-    {
-        await DisplayAlert("Emergency Alert", $"{user.Name} has reported an emergency!", "OK");
     }
 
     private void VibratePhone()
@@ -324,8 +319,14 @@ public partial class RescuerMainPage : ContentPage
         catch { }
     }
 
+    // ❗ FIX: Timer control
     private void StartCardFlicker(TouristUi ui)
     {
+        if (ui.IsFlickering)
+            return;
+
+        ui.IsFlickering = true;
+
         var frame = ui.Frame;
         frame.BackgroundColor = EmergencyColor;
 
@@ -334,7 +335,8 @@ public partial class RescuerMainPage : ContentPage
 
         Device.StartTimer(TimeSpan.FromMilliseconds(intervalMs), () =>
         {
-            if (frame?.Handler == null) return false;
+            if (!ui.IsFlickering || frame?.Handler == null)
+                return false;
 
             var target = dim ? 1.0 : 0.4;
             dim = !dim;
@@ -345,13 +347,10 @@ public partial class RescuerMainPage : ContentPage
 
     private void StopCardFlicker(TouristUi ui)
     {
+        ui.IsFlickering = false;
+
         var frame = ui.Frame;
         frame.BackgroundColor = ui.OriginalColor;
         frame.Opacity = 1.0;
-    }
-    private void PlayAlarmSound()
-    {
-        var audio = ServiceHelper.GetService<IAudioService>();
-        StartAlarmLoop();
     }
 }

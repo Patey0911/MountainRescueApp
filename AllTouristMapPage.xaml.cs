@@ -53,6 +53,36 @@ public partial class AllTouristsMapPage : ContentPage
     }
 
     // ---------------------------------------------------------
+    // 0. EMERGENCY TEXT BUILDER
+    // ---------------------------------------------------------
+    private string GetEmergencyText(EmergencyModel e)
+    {
+        if (e == null || !e.Accidentat)
+            return "Nu există urgențe active.";
+
+        var list = new List<string>();
+
+        if (e.Pierdut) list.Add("Pierdut");
+        if (e.Entorsa) list.Add("Entorsă");
+        if (e.Luxatie) list.Add("Luxație");
+        if (e.Fractura) list.Add("Fractură");
+        if (e.Contuzie) list.Add("Contuzie");
+        if (e.Hipotermie) list.Add("Hipotermie");
+        if (e.Degeratura) list.Add("Degerătură");
+        if (e.Insolatie) list.Add("Insolație");
+        if (e.Deshidratare) list.Add("Deshidratare");
+        if (e.RaudeAltitudine) list.Add("Rău de altitudine");
+        if (e.EpuizareFizica) list.Add("Epuizare fizică");
+        if (e.CrizaRespiratorie) list.Add("Criză respiratorie");
+        if (e.Avalansa) list.Add("Avalanșă");
+        if (e.Intepatura) list.Add("Înțepătură");
+        if (e.Muscatura) list.Add("Muşcătură");
+
+        return "Urgențe:\n- " + string.Join("\n- ", list);
+
+    }
+
+    // ---------------------------------------------------------
     // 1. LOAD FULL TRACK FOR SELECTED USER
     // ---------------------------------------------------------
     private async Task LoadFullTrackSelectedUser()
@@ -80,13 +110,17 @@ public partial class AllTouristsMapPage : ContentPage
         var last = path.Last();
         var lastPos = new Location(last.Latitude, last.Longitude);
 
+        var emergency = await EmergenciesRepository.GetByCNP(selectedUser.CNP);
+
         selectedUserPin = new Pin
         {
             Label = selectedUser.Name,
-            Address = "Ultima locație cunoscută",
+            Address = GetEmergencyText(emergency),
             Location = lastPos,
             Type = PinType.Place
         };
+
+        selectedUserPin.MarkerClicked += OnPinMarkerClicked;
 
         MainMap.Pins.Add(selectedUserPin);
 
@@ -117,13 +151,17 @@ public partial class AllTouristsMapPage : ContentPage
             var last = path.Last();
             var lastPos = new Location(last.Latitude, last.Longitude);
 
+            var emergency = await EmergenciesRepository.GetByCNP(user.CNP);
+
             var pin = new Pin
             {
                 Label = user.Name,
-                Address = "Ultima locație",
+                Address = GetEmergencyText(emergency),
                 Location = lastPos,
                 Type = PinType.Place
             };
+
+            pin.MarkerClicked += OnPinMarkerClicked;
 
             otherUsersPins[user.CNP] = pin;
             MainMap.Pins.Add(pin);
@@ -174,27 +212,27 @@ public partial class AllTouristsMapPage : ContentPage
             });
     }
 
-    private void UpdateSelectedUserOnMap(LocationModel loc)
+    private async void UpdateSelectedUserOnMap(LocationModel loc)
     {
         var position = new Location(loc.Latitude, loc.Longitude);
 
-        // Filter out bad jumps (convert km → meters)
         if (lastSelectedPoint != null)
         {
             double distKm = Location.CalculateDistance(lastSelectedPoint, position, DistanceUnits.Kilometers);
             double dist = distKm * 1000;
 
-            if (dist > 40) // ignore teleport jumps
+            if (dist > 40)
                 return;
         }
 
         lastSelectedPoint = position;
 
         selectedUserPolyline.Geopath.Add(position);
-
         selectedUserPin.Location = position;
 
-        // AUTO-CENTER ALWAYS (Option A)
+        var emergency = await EmergenciesRepository.GetByCNP(selectedUser.CNP);
+        selectedUserPin.Address = GetEmergencyText(emergency);
+
         MainMap.MoveToRegion(
             MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200))
         );
@@ -238,14 +276,89 @@ public partial class AllTouristsMapPage : ContentPage
             });
     }
 
-    private void UpdateOtherUserOnMap(string cnp, LocationModel loc)
+    private async void UpdateOtherUserOnMap(string cnp, LocationModel loc)
     {
         var position = new Location(loc.Latitude, loc.Longitude);
 
         if (otherUsersPins.TryGetValue(cnp, out var pin))
+        {
             pin.Location = position;
+
+            var emergency = await EmergenciesRepository.GetByCNP(cnp);
+            pin.Address = GetEmergencyText(emergency);
+        }
 
         if (otherUsersPolylines.TryGetValue(cnp, out var poly))
             poly.Geopath.Add(position);
+    }
+
+    // ---------------------------------------------------------
+    // 5. PIN CLICK → SALVARE TURIST
+    // ---------------------------------------------------------
+    private async void OnPinMarkerClicked(object sender, PinClickedEventArgs e)
+    {
+        e.HideInfoWindow = true;
+
+        var pin = sender as Pin;
+        if (pin == null)
+            return;
+
+        string cnp = null;
+
+        if (pin == selectedUserPin)
+            cnp = selectedUser.CNP;
+        else
+            cnp = otherUsersPins.FirstOrDefault(x => x.Value == pin).Key;
+
+        if (string.IsNullOrEmpty(cnp))
+            return;
+
+        // Luăm urgența din Firebase
+        var emergency = await EmergenciesRepository.GetByCNP(cnp);
+
+        // Construim textul urgențelor
+        string emergencyText = GetEmergencyText(emergency);
+
+        // Afișăm popup-ul complet
+        bool save = await DisplayAlert(
+            $"Turist: {pin.Label}",
+            emergencyText,
+            "Salvează turistul",
+            "Închide"
+        );
+
+        if (!save)
+            return;
+
+        await MarkTouristAsSaved(cnp);
+
+        pin.Address = "Ultima locație";
+
+    }
+
+    private async Task MarkTouristAsSaved(string cnp)
+    {
+        var emergency = new EmergencyModel
+        {
+            CNP = cnp,
+            Pierdut = false,
+            Entorsa = false,
+            Luxatie = false,
+            Fractura = false,
+            Contuzie = false,
+            Hipotermie = false,
+            Degeratura = false,
+            Insolatie = false,
+            Deshidratare = false,
+            RaudeAltitudine = false,
+            EpuizareFizica = false,
+            CrizaRespiratorie = false,
+            Avalansa = false,
+            Intepatura = false,
+            Muscatura = false,
+            Accidentat = false
+        };
+
+        await EmergenciesRepository.Save(emergency);
     }
 }

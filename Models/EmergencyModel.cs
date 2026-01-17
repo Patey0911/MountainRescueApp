@@ -58,6 +58,9 @@ namespace MountainRescueApp.Models
         [FirestoreProperty]
         public bool Muscatura { get; set; }
 
+        [FirestoreProperty]
+        public bool Accidentat { get; set; }
+
         public EmergencyModel() { }
 
 
@@ -77,7 +80,8 @@ namespace MountainRescueApp.Models
             bool crizaRespiratorie,
             bool avalansa,
             bool intepatura,
-            bool muscatura)
+            bool muscatura,
+            bool accidentat)
         {
             CNP = cnp;
             Pierdut = pierdut;
@@ -95,6 +99,7 @@ namespace MountainRescueApp.Models
             Avalansa = avalansa;
             Intepatura = intepatura;
             Muscatura = muscatura;
+            Accidentat = accidentat;
         }
 
     }

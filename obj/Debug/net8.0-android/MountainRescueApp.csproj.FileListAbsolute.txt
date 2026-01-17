@@ -288,7 +288,6 @@ F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.N
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Numerics.dll
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Numerics.Vectors.dll
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.ObjectModel.dll
-F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Private.DataContractSerialization.dll
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Private.Uri.dll
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Private.Xml.dll
@@ -1162,3 +1161,4 @@ F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\stamp\_ConvertResources
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\stamp\_GenerateJavaStubs.stamp
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\stamp\_GeneratePackageManagerJava.stamp
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\stamp\_ResolveLibraryProjectImports.stamp
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll

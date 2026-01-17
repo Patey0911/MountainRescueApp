@@ -24,6 +24,23 @@ public partial class EmergencyFormPage : ContentPage
             return;
         }
 
+        bool accidentat =
+            PierdutSwitch.IsToggled ||
+            EntorsaSwitch.IsToggled ||
+            LuxatieSwitch.IsToggled ||
+            FracturaSwitch.IsToggled ||
+            ContuzieSwitch.IsToggled ||
+            HipotermieSwitch.IsToggled ||
+            DegeraturaSwitch.IsToggled |
+            InsolatieSwitch.IsToggled ||
+            DeshidratareSwitch.IsToggled ||
+            RaudeAltitudineSwitch.IsToggled ||
+            EpuizareFizicaSwitch.IsToggled ||
+            CrizaRespiratorieSwitch.IsToggled ||
+            AvalansaSwitch.IsToggled ||
+            IntepaturaSwitch.IsToggled||
+            MuscaturaSwitch.IsToggled;
+
         var model = new EmergencyModel
         {
             CNP = _user.CNP,
@@ -41,7 +58,8 @@ public partial class EmergencyFormPage : ContentPage
             CrizaRespiratorie = CrizaRespiratorieSwitch.IsToggled,
             Avalansa = AvalansaSwitch.IsToggled,
             Intepatura = IntepaturaSwitch.IsToggled,
-            Muscatura = MuscaturaSwitch.IsToggled
+            Muscatura = MuscaturaSwitch.IsToggled,
+            Accidentat = accidentat
         };
 
         try
