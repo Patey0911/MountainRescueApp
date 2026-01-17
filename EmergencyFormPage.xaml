@@ -2,92 +2,111 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MountainRescueApp.EmergencyFormPage"
-             Title="Report Emergency">
+             Title="Report Emergency"
+             BackgroundColor="#F2F6FA">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="16">
-            <Label Text="Select what you are experiencing" 
-                   FontAttributes="Bold" FontSize="20"/>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- A set of switches -->
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Pierdut (Lost)" />
-                <Switch x:Name="PierdutSwitch" Grid.Column="1"/>
-            </Grid>
+            <Label Text="Select what you are experiencing / Selectați ce experimentați"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="#1A1A1A"
+                   HorizontalOptions="Center" />
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Entorsă (Sprain)" />
-                <Switch x:Name="EntorsaSwitch" Grid.Column="1"/>
-            </Grid>
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   Padding="20"
+                   HasShadow="True">
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Luxație (Dislocation)" />
-                <Switch x:Name="LuxatieSwitch" Grid.Column="1"/>
-            </Grid>
+                <VerticalStackLayout Spacing="18">
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Fractură (Fracture)" />
-                <Switch x:Name="FracturaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Pierdut / Lost" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="PierdutSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Contuzie (Bruise)" />
-                <Switch x:Name="ContuzieSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Entorsă / Sprain" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="EntorsaSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Hipotermie (Hypothermia)" />
-                <Switch x:Name="HipotermieSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Luxație / Dislocation" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="LuxatieSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Degerătură (Frostbite)" />
-                <Switch x:Name="DegeraturaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Fractură / Fracture" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="FracturaSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Insolație (Heat stroke)" />
-                <Switch x:Name="InsolatieSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Contuzie / Bruise" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="ContuzieSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Deshidratare (Dehydration)" />
-                <Switch x:Name="DeshidratareSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Hipotermie / Hypothermia" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="HipotermieSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Rău de altitudine" />
-                <Switch x:Name="RaudeAltitudineSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Degerătură / Frostbite" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="DegeraturaSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Epuizare fizică" />
-                <Switch x:Name="EpuizareFizicaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Insolație / Heat Stroke" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="InsolatieSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Criză respiratorie" />
-                <Switch x:Name="CrizaRespiratorieSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Deshidratare / Dehydration" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="DeshidratareSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Avalanșă" />
-                <Switch x:Name="AvalansaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Rău de altitudine / Altitude Sickness" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="RaudeAltitudineSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Înțepătură" />
-                <Switch x:Name="IntepaturaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Epuizare fizică / Physical Exhaustion" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="EpuizareFizicaSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" ColumnSpacing="12">
-                <Label Text="Mușcătură" />
-                <Switch x:Name="MuscaturaSwitch" Grid.Column="1"/>
-            </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Criză respiratorie / Breathing Difficulty" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="CrizaRespiratorieSwitch" Grid.Column="1"/>
+                    </Grid>
 
-            <Button Text="Submit"
-                    BackgroundColor="DarkRed"
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Avalanșă / Avalanche" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="AvalansaSwitch" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Înțepătură / Sting" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="IntepaturaSwitch" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="Mușcătură / Bite" FontSize="18" TextColor="#333" />
+                        <Switch x:Name="MuscaturaSwitch" Grid.Column="1"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Submit Emergency Report"
+                    BackgroundColor="#C62828"
                     TextColor="White"
-                    Clicked="Submit_Clicked"/>
+                    CornerRadius="12"
+                    FontSize="18"
+                    HeightRequest="55"
+                    Clicked="Submit_Clicked" />
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

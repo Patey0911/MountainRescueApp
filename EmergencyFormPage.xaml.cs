@@ -24,7 +24,7 @@ public partial class EmergencyFormPage : ContentPage
             return;
         }
 
-        var model = new EmergenciesModel
+        var model = new EmergencyModel
         {
             CNP = _user.CNP,
             Pierdut = PierdutSwitch.IsToggled,

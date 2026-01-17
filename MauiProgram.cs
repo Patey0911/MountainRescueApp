@@ -13,7 +13,7 @@ namespace MountainRescueApp
 
             builder
                 .UseMauiApp<App>()
-                .UseMauiMaps()   // This is all you need for Maps
+                .UseMauiMaps()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,6 +26,8 @@ namespace MountainRescueApp
 
             builder.Services.AddSingleton<FirestoreService>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddSingleton<IAudioService, AudioService>();
+
 
             return builder.Build();
         }

@@ -18,12 +18,12 @@ public partial class RescueRegisterPage : ContentPage
     {
         if (txtPassword.IsPassword)
         {
-            password_icon.Source = "showpassword.png";
+            password_icon.Source = "showpasswordwhite.png";
             txtPassword.IsPassword = false;
         }
         else
         {
-            password_icon.Source = "hidepassword.png";
+            password_icon.Source = "hidepasswordwhite.png";
             txtPassword.IsPassword = true;
         }
     }
@@ -32,18 +32,24 @@ public partial class RescueRegisterPage : ContentPage
     {
         if (txtPassword_Confirm.IsPassword)
         {
-            password_icon2.Source = "showpassword.png";
+            password_icon2.Source = "showpasswordwhite.png";
             txtPassword_Confirm.IsPassword = false;
         }
         else
         {
-            password_icon2.Source = "hidepassword.png";
+            password_icon2.Source = "hidepasswordwhite.png";
             txtPassword_Confirm.IsPassword = true;
         }
+    }
+    private async void AnimateButton(Button button)
+    {
+        await button.ScaleTo(0.92, 80, Easing.CubicOut);   // press down
+        await button.ScaleTo(1.0, 80, Easing.CubicIn);     // release
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
+        AnimateButton((Button)sender);
         //Get the input from the register form completed by the user
         Name = txtName.Text;
         Password = AESRepository.EncryptAesManaged(txtPassword.Text);

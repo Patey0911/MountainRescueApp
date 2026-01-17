@@ -5,6 +5,7 @@ using MountainRescueApp.Models;
 using MountainRescueApp.Services;
 using Firebase.Database;
 using Firebase.Database.Query;
+using System.Diagnostics;
 
 namespace MountainRescueApp;
 
@@ -18,9 +19,11 @@ public partial class AllTouristsMapPage : ContentPage
     private Polyline selectedUserPolyline;
     private Pin selectedUserPin;
 
-    private UInt64 lastLoadedLocationNo = 0;
+    private ulong lastLoadedLocationNo = 0;
 
-    // Pentru ceilalți turiști
+    private Location lastCenter = null;
+    private Location lastSelectedPoint = null;
+
     private Dictionary<string, Pin> otherUsersPins = new();
     private Dictionary<string, Polyline> otherUsersPolylines = new();
     private Dictionary<string, ulong> otherUsersLastLocationNo = new();
@@ -50,12 +53,13 @@ public partial class AllTouristsMapPage : ContentPage
     }
 
     // ---------------------------------------------------------
-    // 1. ÎNCĂRCARE COMPLETĂ TURIST SELECTAT
+    // 1. LOAD FULL TRACK FOR SELECTED USER
     // ---------------------------------------------------------
     private async Task LoadFullTrackSelectedUser()
     {
         var path = await LocationRepository.GetByCNP(selectedUser.CNP);
         var userColor = Color.FromRgb(selectedUser.Red, selectedUser.Green, selectedUser.Blue);
+
         if (path == null || path.Count == 0)
             return;
 
@@ -75,49 +79,25 @@ public partial class AllTouristsMapPage : ContentPage
 
         var last = path.Last();
         var lastPos = new Location(last.Latitude, last.Longitude);
-        var emergency = await EmergenciesRepository.GetByCNP(selectedUser.CNP);
 
-        var parts = new List<string>();
-
-        if (emergency?.Pierdut == true) parts.Add("Pierdut");
-        if (emergency?.Entorsa == true) parts.Add("Entorsă");
-        if (emergency?.Luxatie == true) parts.Add("Luxație");
-        if (emergency?.Fractura == true) parts.Add("Fractură");
-        if (emergency?.Contuzie == true) parts.Add("Contuzie");
-        if (emergency?.Hipotermie == true) parts.Add("Hipotermie");
-        if (emergency?.Degeratura == true) parts.Add("Degerătură");
-        if (emergency?.Insolatie == true) parts.Add("Insolație");
-        if (emergency?.Deshidratare == true) parts.Add("Deshidratare");
-        if (emergency?.RaudeAltitudine == true) parts.Add("Rău de altitudine");
-        if (emergency?.EpuizareFizica == true) parts.Add("Epuizare fizică");
-        if (emergency?.CrizaRespiratorie == true) parts.Add("Criză respiratorie");
-        if (emergency?.Avalansa == true) parts.Add("Avalanșă");
-        if (emergency?.Intepatura == true) parts.Add("Înțepătură");
-        if (emergency?.Muscatura == true) parts.Add("Mușcătură");
-
-        string address = parts.Count > 0
-            ? string.Join(", ", parts)
-            : "Ultima locație cunoscută";
-
-        // Create the pin
         selectedUserPin = new Pin
         {
             Label = selectedUser.Name,
-            Address = address,
+            Address = "Ultima locație cunoscută",
             Location = lastPos,
             Type = PinType.Place
         };
 
-
         MainMap.Pins.Add(selectedUserPin);
 
-        MainMap.MoveToRegion(
-            MapSpan.FromCenterAndRadius(lastPos, Distance.FromMeters(200))
-        );
+        lastCenter = lastPos;
+        lastSelectedPoint = lastPos;
+
+        MainMap.MoveToRegion(MapSpan.FromCenterAndRadius(lastPos, Distance.FromMeters(200)));
     }
 
     // ---------------------------------------------------------
-    // 2. ÎNCĂRCARE COMPLETĂ PENTRU TOȚI CEILALȚI TURIȘTI
+    // 2. LOAD ALL OTHER TOURISTS
     // ---------------------------------------------------------
     private async Task LoadAllOtherTourists()
     {
@@ -127,15 +107,16 @@ public partial class AllTouristsMapPage : ContentPage
         {
             if (user.CNP == selectedUser.CNP)
                 continue;
+
             var userColor = Color.FromRgb(user.Red, user.Green, user.Blue);
             var path = await LocationRepository.GetByCNP(user.CNP);
+
             if (path == null || path.Count == 0)
                 continue;
 
             var last = path.Last();
             var lastPos = new Location(last.Latitude, last.Longitude);
 
-            // Pin
             var pin = new Pin
             {
                 Label = user.Name,
@@ -147,7 +128,6 @@ public partial class AllTouristsMapPage : ContentPage
             otherUsersPins[user.CNP] = pin;
             MainMap.Pins.Add(pin);
 
-            // Traseu
             var poly = new Polyline
             {
                 StrokeColor = userColor,
@@ -165,7 +145,7 @@ public partial class AllTouristsMapPage : ContentPage
     }
 
     // ---------------------------------------------------------
-    // 3. REAL-TIME TURIST SELECTAT
+    // 3. REAL-TIME SELECTED USER
     // ---------------------------------------------------------
     private void StartRealtimeTrackingSelectedUser()
     {
@@ -198,19 +178,32 @@ public partial class AllTouristsMapPage : ContentPage
     {
         var position = new Location(loc.Latitude, loc.Longitude);
 
+        // Filter out bad jumps (convert km → meters)
+        if (lastSelectedPoint != null)
+        {
+            double distKm = Location.CalculateDistance(lastSelectedPoint, position, DistanceUnits.Kilometers);
+            double dist = distKm * 1000;
+
+            if (dist > 40) // ignore teleport jumps
+                return;
+        }
+
+        lastSelectedPoint = position;
+
         selectedUserPolyline.Geopath.Add(position);
 
-        MainMap.Pins.Remove(selectedUserPin);
         selectedUserPin.Location = position;
-        MainMap.Pins.Add(selectedUserPin);
 
+        // AUTO-CENTER ALWAYS (Option A)
         MainMap.MoveToRegion(
             MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200))
         );
+
+        lastCenter = position;
     }
 
     // ---------------------------------------------------------
-    // 4. REAL-TIME PENTRU TOȚI CEILALȚI TURIȘTI
+    // 4. REAL-TIME OTHER TOURISTS
     // ---------------------------------------------------------
     private void StartRealtimeTrackingAllTourists()
     {
@@ -250,15 +243,9 @@ public partial class AllTouristsMapPage : ContentPage
         var position = new Location(loc.Latitude, loc.Longitude);
 
         if (otherUsersPins.TryGetValue(cnp, out var pin))
-        {
-            MainMap.Pins.Remove(pin);
             pin.Location = position;
-            MainMap.Pins.Add(pin);
-        }
 
         if (otherUsersPolylines.TryGetValue(cnp, out var poly))
-        {
             poly.Geopath.Add(position);
-        }
     }
 }

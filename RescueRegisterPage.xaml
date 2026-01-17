@@ -1,151 +1,167 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MountainRescueApp.RescueRegisterPage"
-             BackgroundColor="LightBlue">
-    <ContentPage.Content>
-        <StackLayout
-        
-        Padding="30" 
-        VerticalOptions="Center"
-        HorizontalOptions="FillAndExpand"
-        BackgroundColor="LightBlue">
+<ContentPage
+    x:Class="MountainRescueApp.RescueRegisterPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-            <Image 
-                Source="mountainrescue_imageimag.png" 
-                HeightRequest="300"
-                WidthRequest="300"
-                Aspect="AspectFit">
-            </Image>
+    <!-- Same gradient background as login page -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#0A6FAF" Offset="0.0" />
+            <GradientStop Color="#1A8FBF" Offset="0.5" />
+            <GradientStop Color="#34BCCC" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
+    <Grid>
+        <VerticalStackLayout
+            Padding="10,5,10,50"
+            Spacing="12"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand">
 
-            <Entry 
-            x:Name="txtCNP"
-            Placeholder="CNP" 
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtCNP_Completed"
-            Keyboard="Email"
-            FontAttributes="Bold"
-            Text="{Binding Email}">
-            </Entry>
+            <!-- Logo -->
+            <Image
+                Source="mountainrescue_imageimag.png"
+                HeightRequest="200"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" />
 
-            <Entry 
-            x:Name="txtCodID"
-            Placeholder="Identification Code" 
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtCodID_Completed"
-            Keyboard="Email"
-            FontAttributes="Bold"
-            Text="{Binding Email}">
-            </Entry>
+            <!-- CNP -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtCNP"
+                       Placeholder="CNP"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       Keyboard="Numeric"
+                       FontSize="15"
+                       Completed="txtCNP_Completed"/>
+            </Frame>
 
-            <Entry 
-            x:Name="txtName"
-            Placeholder="Name" 
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtName_Completed"
-            FontAttributes="Bold"
-            Text="{Binding Email}">
-            </Entry>
+            <!-- Identification Code -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtCodID"
+                       Placeholder="Identification Code"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       FontSize="15"
+                       Completed="txtCodID_Completed"/>
+            </Frame>
 
-            <Entry 
-            x:Name="txtNr_Telefon"
-            Placeholder="Mobile Number"  
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtNr_Telefon_Completed"
-            FontAttributes="Bold"
-            Text="{Binding Driver}">
-            </Entry>
+            <!-- Name -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtName"
+                       Placeholder="Name"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       FontSize="15"
+                       Completed="txtName_Completed"/>
+            </Frame>
 
-            <Entry 
-            x:Name="txtEmail"
-            Placeholder="E-Mail"  
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtEmail_Completed"
-            FontAttributes="Bold"
-            Text="{Binding Driver}">
-            </Entry>
+            <!-- Phone -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtNr_Telefon"
+                       Placeholder="Mobile Number"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       Keyboard="Telephone"
+                       FontSize="15"
+                       Completed="txtNr_Telefon_Completed"/>
+            </Frame>
 
-            <Entry 
-            x:Name="txtMountain"
-            Placeholder="Mountain"  
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtMountain_Completed"
-            Focused="txtMountain_Focused"
-            FontAttributes="Bold"
-            Text="{Binding Driver}">
-            </Entry>
+            <!-- Email -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtEmail"
+                       Placeholder="E-Mail"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       Keyboard="Email"
+                       FontSize="15"
+                       Completed="txtEmail_Completed"/>
+            </Frame>
 
-            <Entry 
-            x:Name="txtPassword"
-            Placeholder="Password" 
-            IsPassword="True" 
-            TextColor="Black"
-            PlaceholderColor="gray"
-            Completed="txtPassword_Completed"
-            FontAttributes="Bold"
-            Text="{Binding Password}">
-            </Entry>
-            <Image 
-            x:Name="password_icon"
-            Source="HidePassword.png"
-            Margin="0,0,10,-30"  
-            HeightRequest="30"  
-            HorizontalOptions="End"
-            TranslationY="-45"
-            >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                    Tapped="TapGestureRecognizer_Tapped"
-                    NumberOfTapsRequired="1">
-                    </TapGestureRecognizer>
-                </Image.GestureRecognizers>
-            </Image>
-            <Entry 
-            x:Name="txtPassword_Confirm"
-            Placeholder="Confirm Password" 
-            IsPassword="True" 
-            TextColor="Black"
-            PlaceholderColor="gray"
-            FontAttributes="Bold"
-            Text="{Binding Password}">
-            </Entry>
-            <Image 
-            x:Name="password_icon2"
-            Source="HidePassword.png"
-            Margin="0,0,10,0"  
-            HeightRequest="30"  
-            HorizontalOptions="End"
-            TranslationY="-45"
-            >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                    Tapped="TapGestureRecognizer_Tapped_1"
-                    NumberOfTapsRequired="1">
-                    </TapGestureRecognizer>
-                </Image.GestureRecognizers>
-            </Image>
-            <Button 
-            x:Name="RegisterButton"
-            VerticalOptions="Center" 
-            Text="Register" 
-            FontSize="20"
-            FontAttributes="Bold"
-            TextColor="Black" 
-            BackgroundColor="#4E8594" 
-            BorderWidth="1"
-            BorderColor="Black"
-            CornerRadius="50"
-            Clicked="Button_Clicked">
-            </Button>
+            <!-- Mountain -->
+            <Frame BackgroundColor="DarkSlateBlue" CornerRadius="10" Padding="10,0" HeightRequest="44">
+                <Entry x:Name="txtMountain"
+                       Placeholder="Mountain"
+                       TextColor="White"
+                       PlaceholderColor="#D0EFFF"
+                       FontSize="15"
+                       Completed="txtMountain_Completed"
+                       Focused="txtMountain_Focused"/>
+            </Frame>
 
+            <!-- Password (icon inside frame) -->
+            <Frame BackgroundColor="DarkSlateBlue"
+                   CornerRadius="10"
+                   Padding="10,0"
+                   HeightRequest="44">
 
-        </StackLayout>
-    </ContentPage.Content>
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Entry x:Name="txtPassword"
+                           Placeholder="Password"
+                           TextColor="White"
+                           PlaceholderColor="#D0EFFF"
+                           FontSize="15"
+                           IsPassword="True"
+                           Completed="txtPassword_Completed"/>
+
+                    <Image Grid.Column="1"
+                           x:Name="password_icon"
+                           Source="HidePasswordWhite.png"
+                           HeightRequest="22"
+                           VerticalOptions="Center"
+                           Margin="0,0,5,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </Frame>
+
+            <!-- Confirm Password (icon inside frame) -->
+            <Frame BackgroundColor="DarkSlateBlue"
+                   CornerRadius="10"
+                   Padding="10,0"
+                   HeightRequest="44">
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Entry x:Name="txtPassword_Confirm"
+                           Placeholder="Confirm Password"
+                           TextColor="White"
+                           PlaceholderColor="#D0EFFF"
+                           FontSize="15"
+                           IsPassword="True"/>
+
+                    <Image Grid.Column="1"
+                           x:Name="password_icon2"
+                           Source="HidePasswordWhite.png"
+                           HeightRequest="22"
+                           VerticalOptions="Center"
+                           Margin="0,0,5,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </Frame>
+
+            <!-- Register Button -->
+            <Button
+                x:Name="RegisterButton"
+                Text="Register"
+                FontSize="17"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1E90FF"
+                CornerRadius="20"
+                HeightRequest="46"
+                Clicked="Button_Clicked"/>
+
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

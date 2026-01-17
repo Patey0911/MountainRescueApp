@@ -14,8 +14,24 @@ namespace MountainRescueApp
             firestoreService = new FirestoreService();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
+            base.OnAppearing();
+
+            // Fade in the whole container
+            await MainContainer.FadeTo(1, 150, Easing.CubicInOut);
+            await MainContainer.TranslateTo(0, 0, 150, Easing.CubicOut);
+
+            // Animate children
+            foreach (var child in MainContainer.Children)
+            {
+                if (child is VisualElement ve)
+                {
+                    await ve.FadeTo(1, 150, Easing.CubicInOut);
+                    await ve.TranslateTo(0, 0, 150, Easing.CubicOut);
+                }
+            }
+
             txtPassword.Text = "";
             txtUsername.Text = "";
         }
@@ -24,22 +40,30 @@ namespace MountainRescueApp
             txtPassword.Focus();
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (txtPassword.IsPassword)
-            {
-                password_icon.Source = "showpasswordwhite.png";
-                txtPassword.IsPassword = false;
-            }
-            else
-            {
-                password_icon.Source = "hidepasswordwhite.png";
-                txtPassword.IsPassword = true;
-            }
+            // Tap animation
+            await password_icon.ScaleTo(0.8, 100);
+            await password_icon.ScaleTo(1, 100);
+
+            // Toggle password visibility
+            txtPassword.IsPassword = !txtPassword.IsPassword;
+            password_icon.Source = txtPassword.IsPassword
+                ? "HidePasswordWhite.png"
+                : "ShowPasswordWhite.png";
+
         }
+
+        private async void AnimateButton(Button button)
+        {
+            await button.ScaleTo(0.92, 80, Easing.CubicOut);   // press down
+            await button.ScaleTo(1.0, 80, Easing.CubicIn);     // release
+        }
+
 
         private async void Button_ClickedAsync(object sender, EventArgs e)
         {
+            AnimateButton((Button)sender);
             String email, password;
             if (string.IsNullOrEmpty(txtUsername.ToString()) || string.IsNullOrEmpty(txtPassword.ToString()))
                 await DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
@@ -125,6 +149,11 @@ namespace MountainRescueApp
         private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RescueRegisterPage());
+        }
+
+        private void txtUsername_Completed_1(object sender, EventArgs e)
+        {
+            txtPassword.Focus();
         }
     }
 }

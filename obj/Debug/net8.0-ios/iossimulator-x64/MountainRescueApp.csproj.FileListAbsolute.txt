@@ -285,7 +285,6 @@ F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.a
 F:\Dizertatie\MountainRescueApp\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
-F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\mauiimage.inputs
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\mauifont.inputs
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\mauisplash.inputs

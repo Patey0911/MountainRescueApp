@@ -1,10 +1,9 @@
-﻿
-using MountainRescueApp.Models;
+﻿using MountainRescueApp.Models;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Timers;
 using MountainRescueApp.Services;
-using System.Threading; // for SemaphoreSlim
+using System.Threading;
 using System.Diagnostics;
 
 namespace MountainRescueApp;
@@ -18,19 +17,25 @@ public partial class UserMainPage : ContentPage
 
     private readonly LocationModel Userlocation = new();
     private UserModel user_global = new();
-    private ulong No_Location = 0; // use ulong for UInt64 alias
+    private ulong No_Location = 0;
+
+    private Location _lastPoint = null;
+    private Location _lastCenter = null;
 
     public UserMainPage(UserModel user)
     {
         InitializeComponent();
 
-        _userPath = new Polyline { StrokeColor = Colors.Red, StrokeWidth = 15 };
+        _userPath = new Polyline
+        {
+            StrokeColor = Colors.Red,
+            StrokeWidth = 15
+        };
+
         user_global = user;
 
-        // Attach polyline to the map
         mappy.MapElements.Add(_userPath);
 
-        // Ensure Emergency button is hidden initially
         EmergencyButton.IsEnabled = false;
     }
 
@@ -39,14 +44,22 @@ public partial class UserMainPage : ContentPage
         base.OnAppearing();
 
         var status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-        if (status != PermissionStatus.Granted) return;
+        if (status != PermissionStatus.Granted)
+            return;
 
-        var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
-        if (location == null) return;
+        var location = await Geolocation.GetLocationAsync(
+            new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1))
+        );
 
-        mappy.MoveToRegion(MapSpan.FromCenterAndRadius(
-            new Location(location.Latitude, location.Longitude),
-            Distance.FromKilometers(1)));
+        if (location == null)
+            return;
+
+        mappy.MoveToRegion(
+            MapSpan.FromCenterAndRadius(
+                new Location(location.Latitude, location.Longitude),
+                Distance.FromKilometers(1)
+            )
+        );
 
         mappy.MapType = MapType.Satellite;
     }
@@ -64,10 +77,8 @@ public partial class UserMainPage : ContentPage
         {
             No_Location = 0;
 
-            // Clear previous path points in DB for this user
             await LocationRepository.Delete(user_global.CNP);
 
-            // Save new state
             user_global.Track = true;
             await UserRepository.UpdateTrack(user_global, true);
 
@@ -84,14 +95,14 @@ public partial class UserMainPage : ContentPage
     {
         _isTracking = true;
 
-        _timer = new System.Timers.Timer(5000)
+        _timer = new System.Timers.Timer(1000) // 1 second updates
         {
             AutoReset = true,
             Enabled = true
         };
+
         _timer.Elapsed += async (s, e) => await UpdateLocation();
 
-        // First point immediately
         await UpdateLocation();
     }
 
@@ -103,14 +114,26 @@ public partial class UserMainPage : ContentPage
         _timer = null;
     }
 
+    private bool IsValidPoint(Location oldLoc, Location newLoc)
+    {
+        if (oldLoc == null)
+            return true;
+
+        // Calculate in KM, convert to meters
+        double distKm = Location.CalculateDistance(oldLoc, newLoc, DistanceUnits.Kilometers);
+        double distance = distKm * 1000;
+
+        // Ignore jumps larger than 30 meters in 1 second
+        return distance <= 30;
+    }
+
     private async Task UpdateLocation()
     {
-        // Prevent overlapping ticks
-        if (!await _tickLock.WaitAsync(0)) return;
+        if (!await _tickLock.WaitAsync(0))
+            return;
 
         try
         {
-            // Check server-side Track before doing anything
             var trackOn = await UserRepository.GetTrackByCnpAsync(user_global.CNP);
             if (!trackOn)
             {
@@ -123,14 +146,41 @@ public partial class UserMainPage : ContentPage
                 return;
             }
 
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
-            if (location == null) return;
+            var location = await Geolocation.GetLocationAsync(
+                new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1))
+            );
+
+            if (location == null)
+                return;
 
             var position = new Location(location.Latitude, location.Longitude);
 
+            if (!IsValidPoint(_lastPoint, position))
+                return;
+
+            _lastPoint = position;
+
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                mappy.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMeters(50)));
+                // Smooth auto-centering
+                if (_lastCenter == null)
+                {
+                    _lastCenter = position;
+                }
+                else
+                {
+                    double distKm = Location.CalculateDistance(_lastCenter, position, DistanceUnits.Kilometers);
+                    double dist = distKm * 1000;
+
+                    if (dist > 30)
+                    {
+                        mappy.MoveToRegion(
+                            MapSpan.FromCenterAndRadius(position, Distance.FromMeters(80))
+                        );
+                        _lastCenter = position;
+                    }
+                }
+
                 _userPath.Geopath.Add(position);
 
                 Userlocation.LocationNo = No_Location;
@@ -154,7 +204,9 @@ public partial class UserMainPage : ContentPage
 
     private async void EmergencyButton_Clicked(object sender, EventArgs e)
     {
-        if (!_isTracking) return;
+        if (!_isTracking)
+            return;
+
         await Navigation.PushAsync(new EmergencyFormPage(user_global));
     }
 }

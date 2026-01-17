@@ -1,29 +1,34 @@
-﻿
-using MountainRescueApp.Models;
+﻿using MountainRescueApp.Models;
 using MountainRescueApp.Services;
-using Microsoft.Maui.Controls.Shapes;  // Ellipse
-using Firebase.Database.Streaming;     // FirebaseEvent<T>
+using Microsoft.Maui.Controls.Shapes;
+using Firebase.Database.Streaming;
 using System.Collections.Generic;
 using System.Linq;
+
+
 
 namespace MountainRescueApp;
 
 public partial class RescuerMainPage : ContentPage
 {
     private IDisposable _usersSub;
+    private IDisposable _emergenciesSub;
 
-    // Keep a quick lookup from Firebase key -> UI
-    private readonly Dictionary<string, TouristUi> _cards = new();
+    private readonly Dictionary<string, TouristUi> _cards = new(); // KEY = CNP !!!
+    private readonly Dictionary<string, bool> _lastEmergencyState = new(); // memorăm ultima stare
 
     private readonly RescuerModel _rescuer;
+
+    private readonly Color EmergencyColor = Colors.Red;
 
     private sealed class TouristUi
     {
         public Frame Frame { get; init; }
-        public Ellipse Dot { get; set; }   // created on demand
+        public Ellipse Dot { get; set; }
         public Label NameLabel { get; init; }
         public Label CnpLabel { get; init; }
         public UserModel Model { get; set; }
+        public Color OriginalColor { get; set; }
     }
 
     public RescuerMainPage(RescuerModel rescuer)
@@ -36,12 +41,10 @@ public partial class RescuerMainPage : ContentPage
     {
         base.OnAppearing();
 
-        // Start streaming from Firebase
         _usersSub = UserRepository.SubscribeToUsers(evt =>
         {
             if (evt == null) return;
 
-            // Marshal UI changes to the UI thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 if (evt.EventType.ToString().Contains("Delete") || evt.Object == null)
@@ -50,50 +53,44 @@ public partial class RescuerMainPage : ContentPage
                 }
                 else
                 {
-                    // ⬇️ FILTER: doar userii de pe acelasi munte
-                    if (string.Equals(evt.Object.Mountain, _rescuer.Mountain, StringComparison.OrdinalIgnoreCase))
-                    {
-                        UpsertUserCard(evt.Key, evt.Object);
-                    }
-                    else
-                    {
-                        // daca userul exista deja dar nu mai corespunde, il scoatem
-                        RemoveUserCard(evt.Key);
-                    }
+                    UpsertUserCard(evt.Object.CNP, evt.Object); // KEY = CNP !!!
                 }
             });
         });
+
+        StartEmergencyListener();
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
+
         _usersSub?.Dispose();
         _usersSub = null;
+
+        _emergenciesSub?.Dispose();
+        _emergenciesSub = null;
     }
 
-
-    private void UpsertUserCard(string key, UserModel user)
+    private void UpsertUserCard(string cnp, UserModel user)
     {
-        if (_cards.TryGetValue(key, out var existing))
+        if (_cards.TryGetValue(cnp, out var existing))
         {
-            // Update UI for existing card
             existing.Model = user;
-
             existing.NameLabel.Text = user.Name;
             existing.CnpLabel.Text = $"CNP: {user.CNP}";
 
             var userColor = Color.FromRgb(user.Red, user.Green, user.Blue);
-            existing.Frame.BackgroundColor = userColor;
+            existing.OriginalColor = userColor;
+
+            if (existing.Frame.BackgroundColor != EmergencyColor)
+                existing.Frame.BackgroundColor = userColor;
 
             SetTrackStatus(existing, user.Track);
-
-            // ⬇️ ensure list is kept ordered after updates
             ResortUsersContainer();
             return;
         }
 
-        // Create new card
         var userColorNew = Color.FromRgb(user.Red, user.Green, user.Blue);
 
         var nameLabel = new Label
@@ -103,6 +100,7 @@ public partial class RescuerMainPage : ContentPage
             FontAttributes = FontAttributes.Bold,
             TextColor = Colors.Black
         };
+
         var cnpLabel = new Label
         {
             Text = $"CNP: {user.CNP}",
@@ -143,9 +141,11 @@ public partial class RescuerMainPage : ContentPage
             Frame = frame,
             NameLabel = nameLabel,
             CnpLabel = cnpLabel,
-            Model = user
+            Model = user,
+            OriginalColor = userColorNew
         };
-        _cards[key] = ui;
+
+        _cards[cnp] = ui; // KEY = CNP !!!
 
         UsersContainer.Children.Add(frame);
 
@@ -153,44 +153,33 @@ public partial class RescuerMainPage : ContentPage
 
         _ = frame.FadeTo(1, 250);
 
-        // ⬇️ keep the container ordered after insert
         ResortUsersContainer();
     }
 
-    private void RemoveUserCard(string key)
+    private void RemoveUserCard(string cnp)
     {
-        if (!_cards.TryGetValue(key, out var ui))
+        if (!_cards.TryGetValue(cnp, out var ui))
             return;
 
-        _cards.Remove(key);
+        _cards.Remove(cnp);
 
         _ = ui.Frame.FadeTo(0, 180).ContinueWith(_ =>
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 UsersContainer.Children.Remove(ui.Frame);
-
-                // ⬇️ re-order after removal (optional, keeps consistency)
                 ResortUsersContainer();
             });
         });
     }
 
-    // Optional: keep cards sorted by Name visually (case-insensitive, null-safe)
     private void ResortUsersContainer()
     {
-        // Build ordered list of frames according to Name
         var ordered = _cards
-            .OrderBy(kv =>
-            {
-                // null-safe, trim spaces
-                var name = kv.Value.Model?.Name ?? string.Empty;
-                return name.Trim();
-            }, StringComparer.OrdinalIgnoreCase)
+            .OrderBy(kv => kv.Value.Model?.Name ?? "")
             .Select(kv => kv.Value.Frame)
             .ToList();
 
-        // Re-render in order
         UsersContainer.Children.Clear();
         foreach (var frame in ordered)
             UsersContainer.Children.Add(frame);
@@ -205,13 +194,10 @@ public partial class RescuerMainPage : ContentPage
                 ui.Dot = CreateFlickeringStatusDot();
                 ui.Dot.HorizontalOptions = LayoutOptions.End;
                 ui.Dot.VerticalOptions = LayoutOptions.Start;
-                ui.Dot.Margin = new Thickness(0); // adjust inset if desired
 
-                // place over the card content
                 if (ui.Frame.Content is Grid grid)
-                {
                     grid.Children.Add(ui.Dot);
-                }
+
                 StartFlicker(ui.Dot);
             }
             ui.Dot.IsVisible = true;
@@ -219,11 +205,10 @@ public partial class RescuerMainPage : ContentPage
         else
         {
             if (ui.Dot != null)
-                ui.Dot.IsVisible = false; // keep it; reuse if Track turns back on
+                ui.Dot.IsVisible = false;
         }
     }
 
-    /// <summary> Creates a small green circular dot. </summary>
     private static Ellipse CreateFlickeringStatusDot()
     {
         return new Ellipse
@@ -237,7 +222,6 @@ public partial class RescuerMainPage : ContentPage
         };
     }
 
-    /// <summary> Flicker animation; keeps running while the dot stays in the visual tree. </summary>
     private void StartFlicker(VisualElement dot)
     {
         const int intervalMs = 500;
@@ -245,7 +229,7 @@ public partial class RescuerMainPage : ContentPage
 
         Device.StartTimer(TimeSpan.FromMilliseconds(intervalMs), () =>
         {
-            if (dot?.Handler == null) return false; // stop if removed from UI
+            if (dot?.Handler == null) return false;
 
             var target = dim ? 1.0 : 0.3;
             dim = !dim;
@@ -253,4 +237,113 @@ public partial class RescuerMainPage : ContentPage
             return true;
         });
     }
+
+    // ---------------- EMERGENCIES REAL-TIME ----------------
+
+    private void StartEmergencyListener()
+    {
+        _emergenciesSub = EmergenciesRepository.SubscribeToEmergencies(evt =>
+        {
+            if (evt?.Object == null || string.IsNullOrWhiteSpace(evt.Key))
+                return;
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                HandleEmergencyEvent(evt.Key, evt.Object);
+            });
+        });
+    }
+
+    private void HandleEmergencyEvent(string cnp, EmergencyModel emergency)
+    {
+        if (!_cards.TryGetValue(cnp, out var ui))
+            return;
+
+        bool hasEmergency =
+            emergency.Pierdut ||
+            emergency.Entorsa ||
+            emergency.Luxatie ||
+            emergency.Fractura ||
+            emergency.Contuzie ||
+            emergency.Hipotermie ||
+            emergency.Degeratura ||
+            emergency.Insolatie ||
+            emergency.Deshidratare ||
+            emergency.RaudeAltitudine ||
+            emergency.EpuizareFizica ||
+            emergency.CrizaRespiratorie ||
+            emergency.Avalansa ||
+            emergency.Intepatura ||
+            emergency.Muscatura;
+
+        // Dacă nu avem stare anterioară, o salvăm
+        if (!_lastEmergencyState.ContainsKey(cnp))
+            _lastEmergencyState[cnp] = hasEmergency;
+
+        // Dacă starea NU s-a schimbat, nu facem nimic
+        if (_lastEmergencyState[cnp] == hasEmergency)
+            return;
+
+        // Actualizăm starea
+        _lastEmergencyState[cnp] = hasEmergency;
+
+        if (hasEmergency)
+        {
+            VibratePhone();
+            PlayAlarmSound();
+            ShowEmergencyPopup(ui.Model);
+            StartCardFlicker(ui);
+        }
+        else
+        {
+            StopCardFlicker(ui);
+        }
+    }
+
+    private async void ShowEmergencyPopup(UserModel user)
+    {
+        await DisplayAlert("Emergency Alert", $"{user.Name} has reported an emergency!", "OK");
+    }
+
+    private void VibratePhone()
+    {
+        try
+        {
+            Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(500));
+        }
+        catch { }
+    }
+
+    private void StartCardFlicker(TouristUi ui)
+    {
+        var frame = ui.Frame;
+        frame.BackgroundColor = EmergencyColor;
+
+        const int intervalMs = 500;
+        bool dim = false;
+
+        Device.StartTimer(TimeSpan.FromMilliseconds(intervalMs), () =>
+        {
+            if (frame?.Handler == null) return false;
+
+            var target = dim ? 1.0 : 0.4;
+            dim = !dim;
+            _ = frame.FadeTo(target, (uint)intervalMs, Easing.Linear);
+            return true;
+        });
+    }
+
+    private void StopCardFlicker(TouristUi ui)
+    {
+        var frame = ui.Frame;
+        frame.BackgroundColor = ui.OriginalColor;
+        frame.Opacity = 1.0;
+    }
+    private void PlayAlarmSound()
+    {
+        var audio = ServiceHelper.GetService<IAudioService>();
+        audio.PlayAlert();
+    }
+
+
 }

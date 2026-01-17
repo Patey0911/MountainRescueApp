@@ -4,11 +4,5 @@
         <name>MountainRescueApp</name>
     </assembly>
     <members>
-        <member name="M:MountainRescueApp.RescuerMainPage.CreateFlickeringStatusDot">
-            <summary> Creates a small green circular dot. </summary>
-        </member>
-        <member name="M:MountainRescueApp.RescuerMainPage.StartFlicker(Microsoft.Maui.Controls.VisualElement)">
-            <summary> Flicker animation; keeps running while the dot stays in the visual tree. </summary>
-        </member>
     </members>
 </doc>
