@@ -8,7 +8,10 @@ namespace MountainRescueApp;
 
 public partial class AudioService : IAudioService
 {
-    public void PlayAlert() => PlayAlertPlatform();
+    public void PlayAlertLoop() => PlayAlertPlatform();
+    public void StopAlert() => StopAlertPlatform();
 
     partial void PlayAlertPlatform();
+    partial void StopAlertPlatform();
 }
+

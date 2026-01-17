@@ -290,8 +290,7 @@ public partial class RescuerMainPage : ContentPage
         if (hasEmergency)
         {
             VibratePhone();
-            PlayAlarmSound();
-            ShowEmergencyPopup(ui.Model);
+            StartAlarmLoop();
             StartCardFlicker(ui);
         }
         else
@@ -299,6 +298,17 @@ public partial class RescuerMainPage : ContentPage
             StopCardFlicker(ui);
         }
     }
+
+    private async void StartAlarmLoop()
+    {
+        var audio = ServiceHelper.GetService<IAudioService>();
+        audio.PlayAlertLoop();
+
+        await DisplayAlert("Emergency Alert", "A tourist has reported an emergency!", "OK");
+
+        audio.StopAlert();
+    }
+
 
     private async void ShowEmergencyPopup(UserModel user)
     {
@@ -342,8 +352,6 @@ public partial class RescuerMainPage : ContentPage
     private void PlayAlarmSound()
     {
         var audio = ServiceHelper.GetService<IAudioService>();
-        audio.PlayAlert();
+        StartAlarmLoop();
     }
-
-
 }

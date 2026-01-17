@@ -15,10 +15,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Platforms\Android\Resources\raw\alarm.mp3" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\mountainrescue_icon.png" />
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\AppIcon\mountainrescue_icon1.png" />
@@ -31,7 +27,7 @@
 	  <None Remove="Resources\Images\mountainrescue_imageimag.png" />
 	  <None Remove="Resources\Images\ShowPassword.png" />
 	  <None Remove="Resources\Images\ShowPasswordWhite.png" />
-	  <None Remove="Resources\Raw\alarm.mp3" />
+	  <None Remove="Resources\Raw\AboutAssets.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,10 +48,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Platforms\Android\Resources\raw\" />
 	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Include="Resources\Raw\AboutAssets.txt" />
 	  <MauiAsset Include="Resources\Raw\alarm.mp3" />
 	</ItemGroup>
 

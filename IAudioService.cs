@@ -8,7 +8,9 @@ namespace MountainRescueApp
 {
     public interface IAudioService
     {
-        void PlayAlert();
+        void PlayAlertLoop();
+        void StopAlert();
     }
+
 
 }

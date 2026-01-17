@@ -202,21 +202,39 @@ public partial class UserRegisterPage : ContentPage
 
     public void GetRandomColor(out int r, out int g, out int b)
     {
-        int targetR = 50, targetG = 255, targetB = 50;
-        Double minDistance = 120.0;
+        // culorile de evitat
+        var avoid = new (int R, int G, int B)[]
+        {
+        (50, 255, 50),   // verdele
+        (255, 0, 0)      // rosu
+        };
+
+        double minDistance = 120.0;
         var random = new Random();
+
         while (true)
         {
             r = random.Next(0, 256);
             g = random.Next(0, 256);
             b = random.Next(0, 256);
 
+            bool ok = true;
 
-            double dist = DistanceRgb(r, g, b, targetR, targetG, targetB);
-            if (dist >= minDistance)
+            foreach (var col in avoid)
+            {
+                double dist = DistanceRgb(r, g, b, col.R, col.G, col.B);
+                if (dist < minDistance)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (ok)
                 return;
         }
     }
+
 
 
     private static double DistanceRgb(int r1, int g1, int b1, int r2, int g2, int b2)
