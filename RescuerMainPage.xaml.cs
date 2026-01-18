@@ -2,8 +2,6 @@
 using MountainRescueApp.Services;
 using Microsoft.Maui.Controls.Shapes;
 using Firebase.Database.Streaming;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MountainRescueApp;
 
@@ -27,8 +25,6 @@ public partial class RescuerMainPage : ContentPage
         public Label CnpLabel { get; init; }
         public UserModel Model { get; set; }
         public Color OriginalColor { get; set; }
-
-        // ❗ FIX: flag pentru timer
         public bool IsFlickering { get; set; } = false;
     }
 
@@ -38,10 +34,11 @@ public partial class RescuerMainPage : ContentPage
         _rescuer = rescuer;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
+        // 🔥 1. Ascultă utilizatorii
         _usersSub = UserRepository.SubscribeToUsers(evt =>
         {
             if (evt == null) return;
@@ -59,7 +56,11 @@ public partial class RescuerMainPage : ContentPage
             });
         });
 
+        // 🔥 2. Ascultă urgențele în timp real
         StartEmergencyListener();
+
+        // 🔥 3. Verifică urgențele EXISTENTE la inițializare
+        await CheckInitialEmergencies();
     }
 
     protected override void OnDisappearing()
@@ -72,6 +73,28 @@ public partial class RescuerMainPage : ContentPage
         _emergenciesSub?.Dispose();
         _emergenciesSub = null;
     }
+
+    // 🔥 Verifică urgențele existente în Firebase la pornire
+    private async Task CheckInitialEmergencies()
+    {
+        var emergencies = await EmergenciesRepository.GetAllEmergencies();
+
+        foreach (var emergency in emergencies)
+        {
+            string cnp = emergency.CNP;
+
+            if (_cards.TryGetValue(cnp, out var ui))
+            {
+                if (emergency.Accidentat)
+                {
+                    _lastEmergencyState[cnp] = false; // forțăm declanșarea
+                    HandleEmergencyEvent(cnp, emergency);
+                }
+            }
+        }
+    }
+
+
 
     private void UpsertUserCard(string cnp, UserModel user)
     {
@@ -90,7 +113,6 @@ public partial class RescuerMainPage : ContentPage
             SetTrackStatus(existing, user.Track);
             ResortUsersContainer();
 
-            CheckInitialEmergencyState(cnp, existing, user);
             return;
         }
 
@@ -157,22 +179,6 @@ public partial class RescuerMainPage : ContentPage
         _ = frame.FadeTo(1, 250);
 
         ResortUsersContainer();
-
-        CheckInitialEmergencyState(cnp, ui, user);
-    }
-
-    private async void CheckInitialEmergencyState(string cnp, TouristUi ui, UserModel user)
-    {
-        var emergency = await EmergenciesRepository.GetByCNP(cnp);
-
-        if (emergency != null && emergency.Accidentat)
-        {
-            _lastEmergencyState[cnp] = true;
-
-            StartCardFlicker(ui);
-            VibratePhone();
-            StartAlarmLoop(user);
-        }
     }
 
     private void RemoveUserCard(string cnp)
@@ -210,15 +216,24 @@ public partial class RescuerMainPage : ContentPage
         {
             if (ui.Dot == null)
             {
-                ui.Dot = CreateFlickeringStatusDot();
-                ui.Dot.HorizontalOptions = LayoutOptions.End;
-                ui.Dot.VerticalOptions = LayoutOptions.Start;
+                ui.Dot = new Ellipse
+                {
+                    WidthRequest = 14,
+                    HeightRequest = 14,
+                    Fill = new SolidColorBrush(Colors.LimeGreen),
+                    Stroke = new SolidColorBrush(Colors.White),
+                    StrokeThickness = 2,
+                    Opacity = 1,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Start
+                };
 
                 if (ui.Frame.Content is Grid grid)
                     grid.Children.Add(ui.Dot);
 
                 StartFlicker(ui.Dot);
             }
+
             ui.Dot.IsVisible = true;
         }
         else
@@ -228,19 +243,6 @@ public partial class RescuerMainPage : ContentPage
         }
     }
 
-    private static Ellipse CreateFlickeringStatusDot()
-    {
-        return new Ellipse
-        {
-            WidthRequest = 14,
-            HeightRequest = 14,
-            Fill = new SolidColorBrush(Colors.LimeGreen),
-            Stroke = new SolidColorBrush(Colors.White),
-            StrokeThickness = 2,
-            Opacity = 1
-        };
-    }
-
     private void StartFlicker(VisualElement dot)
     {
         const int intervalMs = 500;
@@ -248,16 +250,17 @@ public partial class RescuerMainPage : ContentPage
 
         Device.StartTimer(TimeSpan.FromMilliseconds(intervalMs), () =>
         {
-            if (dot?.Handler == null) return false;
+            if (dot?.Handler == null)
+                return false;
 
             var target = dim ? 1.0 : 0.3;
             dim = !dim;
+
             _ = dot.FadeTo(target, (uint)intervalMs, Easing.Linear);
+
             return true;
         });
     }
-
-    // ---------------- EMERGENCIES REAL-TIME ----------------
 
     private void StartEmergencyListener()
     {
@@ -319,7 +322,6 @@ public partial class RescuerMainPage : ContentPage
         catch { }
     }
 
-    // ❗ FIX: Timer control
     private void StartCardFlicker(TouristUi ui)
     {
         if (ui.IsFlickering)
@@ -340,7 +342,9 @@ public partial class RescuerMainPage : ContentPage
 
             var target = dim ? 1.0 : 0.4;
             dim = !dim;
+
             _ = frame.FadeTo(target, (uint)intervalMs, Easing.Linear);
+
             return true;
         });
     }

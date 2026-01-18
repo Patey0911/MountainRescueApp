@@ -59,6 +59,23 @@ namespace MountainRescueApp.Services
             }
         }
 
+        public static async Task<UserModel> GetByCNP(string cnp)
+        {
+            try
+            {
+                var allUsers = await GetAllUsers();
+                await firebaseClient
+                .Child("Users")
+                .OnceAsync<UserModel>();
+                return allUsers.Where(a => a.CNP == cnp).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error:{e}");
+                return null;
+            }
+        }
+
         public static async Task UpdateTrack(UserModel user, bool track)
         {
 

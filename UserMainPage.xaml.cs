@@ -5,6 +5,7 @@ using System.Timers;
 using MountainRescueApp.Services;
 using System.Threading;
 using System.Diagnostics;
+using Microsoft.Maui.Layouts;
 
 namespace MountainRescueApp;
 
@@ -95,7 +96,7 @@ public partial class UserMainPage : ContentPage
     {
         _isTracking = true;
 
-        _timer = new System.Timers.Timer(1000) // 1 second updates
+        _timer = new System.Timers.Timer(1000)
         {
             AutoReset = true,
             Enabled = true
@@ -119,11 +120,9 @@ public partial class UserMainPage : ContentPage
         if (oldLoc == null)
             return true;
 
-        // Calculate in KM, convert to meters
         double distKm = Location.CalculateDistance(oldLoc, newLoc, DistanceUnits.Kilometers);
         double distance = distKm * 1000;
 
-        // Ignore jumps larger than 30 meters in 1 second
         return distance <= 30;
     }
 
@@ -162,17 +161,17 @@ public partial class UserMainPage : ContentPage
 
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                // Smooth auto-centering
+                // Auto-centrare
                 if (_lastCenter == null)
                 {
                     _lastCenter = position;
                 }
                 else
                 {
-                    double distKm = Location.CalculateDistance(_lastCenter, position, DistanceUnits.Kilometers);
-                    double dist = distKm * 1000;
+                    double distKmCenter = Location.CalculateDistance(_lastCenter, position, DistanceUnits.Kilometers);
+                    double distCenter = distKmCenter * 1000;
 
-                    if (dist > 30)
+                    if (distCenter > 30)
                     {
                         mappy.MoveToRegion(
                             MapSpan.FromCenterAndRadius(position, Distance.FromMeters(80))
