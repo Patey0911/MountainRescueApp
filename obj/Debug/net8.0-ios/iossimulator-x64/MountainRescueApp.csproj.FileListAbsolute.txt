@@ -351,3 +351,4 @@ F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\refint\Mou
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\MountainRescueApp.pdb
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\MountainRescueApp.genruntimeconfig.cache
 F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\ref\MountainRescueApp.dll
+F:\Dizertatie\MountainRescueApp\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature

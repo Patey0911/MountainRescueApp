@@ -51,7 +51,18 @@ public partial class RescuerMainPage : ContentPage
                 }
                 else
                 {
-                    UpsertUserCard(evt.Object.CNP, evt.Object);
+                    // Only users from this rescuer's mountain
+                    if (string.Equals(
+                            evt.Object.Mountain,
+                            _rescuer.Mountain,
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        UpsertUserCard(evt.Object.CNP, evt.Object);
+                    }
+                    else
+                    {
+                        RemoveUserCard(evt.Object.CNP);
+                    }
                 }
             });
         });
